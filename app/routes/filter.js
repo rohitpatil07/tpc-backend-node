@@ -1,7 +1,7 @@
-import { Router } from "express";
-import filterControllers from "../controllers/filterControllers.js";
-const router = Router();
+import { Router } from 'express';
+import filterControllers from '../controllers/filterControllers.js';
 
-router.get("/", filterControllers.home);
+const router = Router();
+router.get('/', filterControllers.home);
 
 export default router;
