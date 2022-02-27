@@ -1,13 +1,10 @@
 import express from "express";
 import helmet from "helmet";
 import cors from "cors";
-
 import expressWinston from "express-winston";
 import winston from "winston";
-
-// import SetUpPassportAuth from "./config/passport.js";
 import config from "./config/index.js";
-// import connectDB from "./config/db.js";
+import connectDB from "./config/db.js";
 import routes from "./routes/index.js";
 import logger from "./util/logger.js";
 
@@ -26,10 +23,6 @@ const startServer = () => {
     })
   );
 
-  //   app.use(cookieParser());
-
-  //   SetUpPassportAuth(passport);
-
   if (config.NODE_ENV != "test") {
     app.use(
       expressWinston.logger({
@@ -41,7 +34,6 @@ const startServer = () => {
   }
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-  //   app.use(passport.initialize());
 
   app.use("/", routes);
 
