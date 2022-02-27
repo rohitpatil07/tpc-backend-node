@@ -1,25 +1,12 @@
-<<<<<<< HEAD
-import express from 'express';
-import helmet from 'helmet';
-import cors from 'cors';
-
-import expressWinston from 'express-winston';
-import winston from 'winston';
-
 import config from './config/index.js';
 import connectDB from './config/db.js';
 import routes from './routes/index.js';
 import logger from './util/logger.js';
-=======
-import express from "express";
-import helmet from "helmet";
-import cors from "cors";
-import expressWinston from "express-winston";
-import winston from "winston";
-import config from "./config/index.js";
-import connectDB from "./config/db.js";
-import routes from "./routes/index.js";
-import logger from "./util/logger.js";
+import express from 'express';
+import helmet from 'helmet';
+import cors from 'cors';
+import expressWinston from 'express-winston';
+import winston from 'winston';
 
 const PORT = config.PORT || 3000;
 
@@ -36,7 +23,7 @@ const startServer = () => {
     }),
   );
 
-  if (config.NODE_ENV != "test") {
+  if (config.NODE_ENV != 'test') {
     app.use(
       expressWinston.logger({
         meta: false,
