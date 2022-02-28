@@ -1,5 +1,4 @@
 import config from './config/index.js';
-import connectDB from './config/db.js';
 import routes from './routes/index.js';
 import logger from './util/logger.js';
 import express from 'express';
@@ -11,7 +10,6 @@ import winston from 'winston';
 const PORT = config.PORT || 3000;
 
 const startServer = () => {
-  connectDB();
   const app = express();
 
   app.use(helmet());

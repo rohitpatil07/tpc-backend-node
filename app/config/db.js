@@ -1,20 +1,16 @@
 import logger from '../util/logger.js';
 import config from './index.js';
-import mysql from 'mysql';
+import mysql2 from 'mysql2';
 
-const connectDB = async () => {
+const connectDB = () => {
   try {
-    const conn = await mysql.createConnection({
-      host: config.DB_HOST,
-      database: config.DB_NAME,
-      user: config.DB_USER,
-      password: config.DB_PASS,
-    });
-    logger.info(`MySQL Connected: ${conn.config.host}`);
-  } catch (err) {
-    logger.log('error', 'db: %O', err);
-    process.exit(1);
+    const db = mysql2.createConnection(config.DATABASE_URL);
+    return db;
+  } catch (error) {
+    logger.log('error', 'db: %O', error);
   }
 };
 
-export default connectDB;
+const db = connectDB();
+
+export default db;
