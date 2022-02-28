@@ -9,4 +9,5 @@ yarn run dev or yarn dev
 #To run app in production mode
 yarn start
 
-#Github actions have been set up for auto builds at https://tpc-node-backend.herokuapp.com/
+#Auto builds have been set at heroku 
+App url https://tpc-node-backend.herokuapp.com/
