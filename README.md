@@ -1,4 +1,4 @@
-# tpc-backend-node
+# tpc-backend-node 
 
 #Install dependencies
 yarn
@@ -8,3 +8,5 @@ yarn run dev or yarn dev
 
 #To run app in production mode
 yarn start
+
+#Github actions have been set up for auto builds at https://tpc-node-backend.herokuapp.com/
