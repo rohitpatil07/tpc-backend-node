@@ -1,12 +1,27 @@
 import db from '../config/db.js';
 
-const home = async () => {
+const getAllStudents = async () => {
   try {
+    let table = 'students';
     db.connect();
-    const data = await db.promise().query('SELECT * FROM `students`');
+    let query = 'SELECT * FROM ' + table;
+    const data = await db.promise().query(query);
     return data[0];
   } catch (error) {
     return error;
   }
 };
-export default { home };
+
+const getStudentByRoll = async (rollno) => {
+  try {
+    let student_roll = rollno;
+    db.connect();
+    let query = `SELECT * FROM students WHERE rollno='${student_roll}'`;
+    const data = await db.promise().query(query);
+    return data[0];
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export default { getAllStudents, getStudentByRoll };
