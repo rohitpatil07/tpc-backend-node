@@ -10,4 +10,4 @@ yarn run dev or yarn dev
 yarn start
 
 #Auto builds have been set at heroku using github actions
-App url https://tpc-node-backend.herokuapp.com/
+App url https://tpc-backend-node.herokuapp.com/
