@@ -1,8 +1,6 @@
 import pkg from '@prisma/client';
 const { PrismaClient } = pkg;
 
-// const prisma = new PrismaClient();
-
 let connectDB = () => {
   try {
     const prisma = new PrismaClient();
