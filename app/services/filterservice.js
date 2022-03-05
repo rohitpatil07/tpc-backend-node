@@ -5,8 +5,8 @@ const getAllStudents = async () => {
     let table = 'students';
     db.connect();
     let query = 'SELECT * FROM ' + table;
-    const data = await db.promise().query(query);
-    return data[0];
+    const students = await db.promise().query(query);
+    return students[0];
   } catch (error) {
     return error;
   }
@@ -17,11 +17,22 @@ const getStudentByRoll = async (rollno) => {
     let student_roll = rollno;
     db.connect();
     let query = `SELECT * FROM students WHERE rollno='${student_roll}'`;
-    const data = await db.promise().query(query);
-    return data[0];
+    const students = await db.promise().query(query);
+    return students[0];
   } catch (error) {
     console.log(error);
   }
 };
 
-export default { getAllStudents, getStudentByRoll };
+const getStudentsByDept = async (dept) => {
+  try {
+    db.connect();
+    let query = `SELECT * FROM students WHERE dept='${dept}'`;
+    const students = await db.promise().query(query);
+    return students[0];
+  } catch (error) {
+    return error;
+  }
+};
+
+export default { getAllStudents, getStudentByRoll, getStudentsByDept };

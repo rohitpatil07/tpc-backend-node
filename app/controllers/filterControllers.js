@@ -2,8 +2,8 @@ import filterService from '../services/filterservice.js';
 
 const getAllStudents = async (req, res) => {
   try {
-    let data = await filterService.getAllStudents();
-    res.json({ result: data });
+    let students = await filterService.getAllStudents();
+    res.json({ students: students });
   } catch (error) {
     console.log(error);
     res.json(error);
@@ -13,12 +13,22 @@ const getAllStudents = async (req, res) => {
 const getStudentByRoll = async (req, res) => {
   try {
     let rollnumber = String(req.params.rollno);
-    let data = await filterService.getStudentByRoll(rollnumber);
-    res.json({ result: data });
+    let students = await filterService.getStudentByRoll(rollnumber);
+    res.json({ students: students });
   } catch (error) {
     console.log(error);
     res.json(error);
   }
 };
 
-export default { getAllStudents, getStudentByRoll };
+const getStudentsByDept = async (req, res) => {
+  try {
+    let dept = String(req.params.dept);
+    let students = await filterService.getStudentsByDept(dept);
+    res.json({ students: students });
+  } catch (error) {
+    res.json(error);
+  }
+};
+
+export default { getAllStudents, getStudentByRoll, getStudentsByDept };
