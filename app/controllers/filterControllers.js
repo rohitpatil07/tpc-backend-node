@@ -13,8 +13,8 @@ const getAllStudents = async (req, res) => {
 const getStudentByRoll = async (req, res) => {
   try {
     let rollnumber = String(req.params.rollno);
-    let students = await filterService.getStudentByRoll(rollnumber);
-    res.json({ students: students });
+    let student = await filterService.getStudentByRoll(rollnumber);
+    res.json({ student: student });
   } catch (error) {
     console.log(error);
     res.json(error);
