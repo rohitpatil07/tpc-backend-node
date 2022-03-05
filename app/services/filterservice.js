@@ -3,7 +3,7 @@ import prisma from '../config/prisma.js';
 const getAllStudents = async () => {
   try {
     const students = await prisma.students.findMany();
-    return students[0];
+    return students;
   } catch (error) {
     return error;
   }
@@ -11,12 +11,17 @@ const getAllStudents = async () => {
 
 const getStudentByRoll = async (rollno) => {
   try {
-    const students = await prisma.students.findMany({
+    const student = await prisma.students.findUnique({
       where: {
         rollno: rollno,
       },
+      select: {
+        name: true,
+        rollno: true,
+        dept: true,
+      },
     });
-    return students[0];
+    return student;
   } catch (error) {
     console.log(error);
   }
@@ -29,7 +34,7 @@ const getStudentsByDept = async (dept) => {
         dept: dept,
       },
     });
-    return students[0];
+    return students;
   } catch (error) {
     return error;
   }
