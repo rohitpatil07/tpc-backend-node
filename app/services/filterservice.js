@@ -1,8 +1,13 @@
 import prisma from '../config/prisma.js';
+import bigIntParser from '../util/bigintparser.js';
 
 const getAllStudents = async () => {
   try {
-    const students = await prisma.students.findMany();
+    let students = await prisma.students.findMany();
+    for (let info in students) {
+      console.log(students[info]);
+      students[info] = bigIntParser(students[info]);
+    }
     return students;
   } catch (error) {
     return error;
@@ -11,29 +16,33 @@ const getAllStudents = async () => {
 
 const getStudentByRoll = async (rollno) => {
   try {
-    const student = await prisma.students.findUnique({
+    let data = await prisma.students.findUnique({
       where: {
         rollno: rollno,
       },
-      select: {
-        name: true,
-        rollno: true,
-        dept: true,
-      },
     });
+
+    const student = bigIntParser(data);
+
     return student;
   } catch (error) {
     console.log(error);
   }
 };
 
-const getStudentsByDept = async (dept) => {
+const getStudentsByDept = async (department) => {
   try {
-    const students = await prisma.students.findMany({
+    let students = await prisma.students.findMany({
       where: {
-        dept: dept,
+        department: department,
       },
     });
+
+    for (let info in students) {
+      console.log(students[info]);
+      students[info] = bigIntParser(students[info]);
+    }
+
     return students;
   } catch (error) {
     return error;
