@@ -13,8 +13,8 @@ const download = async (students) => {
     });
 
     await workbook.xlsx.writeFile('export.xlsx');
-
-    return 'File Downloaded';
+    // res.download('export.xlsx');
+    // return 'File Downloaded';
   } catch (error) {
     return error;
   }
