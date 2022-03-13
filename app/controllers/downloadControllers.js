@@ -1,10 +1,10 @@
-import downloadService from '../services/download.js';
+import downloadService from '../services/downloadService.js';
 
 const download = async (req, res) => {
   try {
     const { students } = req.body;
-    const message = await downloadService.download(students);
-    res.json({ message: message });
+    await downloadService.download(students);
+    res.download('export.xlsx');
   } catch (error) {
     res.json(error);
   }
