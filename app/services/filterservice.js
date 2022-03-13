@@ -30,6 +30,33 @@ const getStudentByRoll = async (rollno) => {
   }
 };
 
+const getStudentProfile = async (rollno) => {
+  try {
+    let data = await prisma.students.findUnique({
+      where: {
+        rollno: rollno,
+      },
+      include: {
+        other_info: {
+          select: {
+            hobbies: true,
+          },
+        },
+        academic_info: true,
+        student_placement_details: true,
+        student_experience: true,
+        student_skillset: true,
+      },
+    });
+
+    const student = bigIntParser(data);
+
+    return student;
+  } catch (error) {
+    return error;
+  }
+};
+
 const getStudentsByDept = async (department) => {
   try {
     let students = await prisma.students.findMany({
@@ -53,4 +80,5 @@ export default {
   getAllStudents,
   getStudentByRoll,
   getStudentsByDept,
+  getStudentProfile,
 };
