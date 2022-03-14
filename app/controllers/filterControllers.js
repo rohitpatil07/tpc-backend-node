@@ -21,6 +21,17 @@ const getStudentByRoll = async (req, res) => {
   }
 };
 
+const getStudentProfile = async (req, res) => {
+  try {
+    let rollnumber = String(req.params.rollno);
+    let student = await filterService.getStudentProfile(rollnumber);
+    res.json({ student: student });
+  } catch (error) {
+    console.log(error);
+    res.json(error);
+  }
+};
+
 const getStudentsByDept = async (req, res) => {
   try {
     let dept = String(req.params.dept);
@@ -31,4 +42,9 @@ const getStudentsByDept = async (req, res) => {
   }
 };
 
-export default { getAllStudents, getStudentByRoll, getStudentsByDept };
+export default {
+  getAllStudents,
+  getStudentByRoll,
+  getStudentsByDept,
+  getStudentProfile,
+};

@@ -9,24 +9,23 @@ datasource db {
   referentialIntegrity = "prisma"
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model academic_info {
-  rollno           String? @db.VarChar(10)
-  tenth_percent    Float?  @db.Float
-  twelveth_percent Float?  @db.Float
-  sem1_pointer     Float?  @db.Float
-  sem2_pointer     Float?  @db.Float
-  sem3_pointer     Float?  @db.Float
-  sem4_pointer     Float?  @db.Float
-  sem5_pointer     Float?  @db.Float
-  sem6_pointer     Float?  @db.Float
-  sem7_pointer     Float?  @db.Float
-  sem8_pointer     Float?  @db.Float
-  cgpa             Float?  @db.Float
-  be_percent       Float?  @db.Float
+  rollno           String   @id @db.VarChar(10)
+  tenth_percent    Float?   @db.Float
+  twelveth_percent Float?   @db.Float
+  sem1_pointer     Float?   @db.Float
+  sem2_pointer     Float?   @db.Float
+  sem3_pointer     Float?   @db.Float
+  sem4_pointer     Float?   @db.Float
+  sem5_pointer     Float?   @db.Float
+  sem6_pointer     Float?   @db.Float
+  sem7_pointer     Float?   @db.Float
+  sem8_pointer     Float?   @db.Float
+  cgpa             Float?   @db.Float
+  be_percent       Float?   @db.Float
+  students         students @relation(fields: [rollno], references: [rollno])
 
   @@index([rollno], map: "students_id_idx")
-  @@ignore
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
@@ -37,83 +36,84 @@ model admins {
   @@ignore
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model other_info {
-  rollno               String? @db.VarChar(10)
-  hobbies              String? @db.VarChar(200)
-  pos_of_res_one       String? @db.VarChar(20)
-  pos_of_res_two       String? @db.VarChar(20)
-  pos_of_res_three     String? @db.VarChar(20)
-  pos_of_res_four      String? @db.VarChar(20)
-  extracuricular_one   String? @db.VarChar(100)
-  extracuricular_two   String? @db.VarChar(100)
-  extracuricular_three String? @db.VarChar(100)
+  rollno               String   @id @db.VarChar(10)
+  hobbies              String?  @db.VarChar(200)
+  pos_of_res_one       String?  @db.VarChar(20)
+  pos_of_res_two       String?  @db.VarChar(20)
+  pos_of_res_three     String?  @db.VarChar(20)
+  pos_of_res_four      String?  @db.VarChar(20)
+  extracuricular_one   String?  @db.VarChar(100)
+  extracuricular_two   String?  @db.VarChar(100)
+  extracuricular_three String?  @db.VarChar(100)
+  students             students @relation(fields: [rollno], references: [rollno])
 
   @@index([rollno], map: "students_id_idx")
-  @@ignore
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model student_experience {
-  rollno          String? @db.VarChar(10)
-  intership_one   String? @db.VarChar(400)
-  intership_two   String? @db.VarChar(400)
-  intership_three String? @db.VarChar(400)
-  project_one     String? @db.VarChar(400)
-  project_two     String? @db.VarChar(400)
-  project_three   String? @db.VarChar(400)
-  pref_lang       String? @db.VarChar(10)
-  technologies    String? @db.VarChar(400)
+  rollno          String   @id @db.VarChar(10)
+  intership_one   String?  @db.VarChar(400)
+  intership_two   String?  @db.VarChar(400)
+  intership_three String?  @db.VarChar(400)
+  project_one     String?  @db.VarChar(400)
+  project_two     String?  @db.VarChar(400)
+  project_three   String?  @db.VarChar(400)
+  pref_lang       String?  @db.VarChar(10)
+  technologies    String?  @db.VarChar(400)
+  students        students @relation(fields: [rollno], references: [rollno])
 
   @@index([rollno], map: "student_id_idx")
-  @@ignore
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model student_placement_details {
-  rollno           String? @db.VarChar(10)
-  offer_letter_one Bytes?  @db.Blob
-  offer_letter_two Bytes?  @db.Blob
-  placed_org_one   String? @db.VarChar(50)
-  placed_org_two   String? @db.VarChar(50)
-  package_one      Float?  @db.Float
-  package_two      Float?  @db.Float
+  rollno           String   @id @db.VarChar(10)
+  offer_letter_one Bytes?   @db.Blob
+  offer_letter_two Bytes?   @db.Blob
+  placed_org_one   String?  @db.VarChar(50)
+  placed_org_two   String?  @db.VarChar(50)
+  package_one      Float?   @db.Float
+  package_two      Float?   @db.Float
+  students         students @relation(fields: [rollno], references: [rollno])
 
   @@index([rollno], map: "students_id_idx")
-  @@ignore
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model student_skillset {
-  rollno                 String? @db.VarChar(10)
-  certificate_one        Bytes?  @db.Blob
-  certificate_two        Bytes?  @db.Blob
-  certificate_three      Bytes?  @db.Blob
-  certificate_four       Bytes?  @db.Blob
-  acad_achievement_one   String? @db.VarChar(20)
-  acad_achievement_two   String? @db.VarChar(20)
-  acad_achievement_three String? @db.VarChar(20)
-  acad_achievement_four  String? @db.VarChar(20)
-  career_obj             String? @db.VarChar(300)
+  rollno                 String   @id @db.VarChar(10)
+  certificate_one        Bytes?   @db.Blob
+  certificate_two        Bytes?   @db.Blob
+  certificate_three      Bytes?   @db.Blob
+  certificate_four       Bytes?   @db.Blob
+  acad_achievement_one   String?  @db.VarChar(20)
+  acad_achievement_two   String?  @db.VarChar(20)
+  acad_achievement_three String?  @db.VarChar(20)
+  acad_achievement_four  String?  @db.VarChar(20)
+  career_obj             String?  @db.VarChar(300)
+  students               students @relation(fields: [rollno], references: [rollno])
 
   @@index([rollno], map: "students_id_idx")
-  @@ignore
 }
 
 model students {
-  rollno       String  @id @db.VarChar(10)
-  first_name   String? @db.VarChar(30)
-  last_name    String? @db.VarChar(30)
-  middle_name  String? @db.VarChar(30)
-  email        String? @db.VarChar(50)
-  phone_number BigInt?
-  gender       String? @db.Char(1)
-  github       String? @db.VarChar(50)
-  linkedin     String? @db.VarChar(50)
-  no_of_offers Int?
-  password     String? @default("dypatil@123") @db.VarChar(100)
-  photo        Bytes?  @db.Blob
-  department   String? @db.VarChar(10)
-  batch        Int?
-  rait_email   String? @db.VarChar(50)
+  rollno                    String                     @id @db.VarChar(10)
+  first_name                String?                    @db.VarChar(30)
+  last_name                 String?                    @db.VarChar(30)
+  middle_name               String?                    @db.VarChar(30)
+  email                     String?                    @db.VarChar(50)
+  phone_number              BigInt?
+  gender                    String?                    @db.Char(1)
+  github                    String?                    @db.VarChar(50)
+  linkedin                  String?                    @db.VarChar(50)
+  no_of_offers              Int?
+  password                  String?                    @default("dypatil@123") @db.VarChar(100)
+  photo                     Bytes?                     @db.Blob
+  department                String?                    @db.VarChar(10)
+  batch                     Int?
+  rait_email                String?                    @db.VarChar(50)
+  other_info                other_info?
+  student_skillset          student_skillset?
+  academic_info             academic_info?
+  student_placement_details student_placement_details?
+  student_experience        student_experience?
 }
