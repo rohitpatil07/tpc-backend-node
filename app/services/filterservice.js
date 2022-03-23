@@ -76,9 +76,26 @@ const getStudentsByDept = async (department) => {
   }
 };
 
+const dashboardFilter = async(where_queries,select_fields)=>{
+  try {
+    let data = await prisma.students.findMany({
+      where: where_queries,
+      select: select_fields,
+    });
+    for (let info in data) {
+      console.log(data[info]);
+      data[info] = bigIntParser(data[info]);
+    }
+    const student = data;
+    return student;
+  } catch (error) {
+    return error;
+  }
+};
 export default {
   getAllStudents,
   getStudentByRoll,
   getStudentsByDept,
   getStudentProfile,
+  dashboardFilter
 };
