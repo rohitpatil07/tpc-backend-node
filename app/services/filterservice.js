@@ -76,32 +76,26 @@ const getStudentsByDept = async (department) => {
   }
 };
 
-const getStudentsByCustom = async (h) =>{
-  try{
-    console.log(h)
-    let students = await prisma.students.findMany({
-      where: 
-        h
-      ,
+const dashboardFilter = async(where_queries,select_fields)=>{
+  try {
+    let data = await prisma.students.findMany({
+      where: where_queries,
+      select: select_fields,
     });
-
-    for (let info in students) {
-      console.log(students[info]);
-      students[info] = bigIntParser(students[info]);
+    for (let info in data) {
+      console.log(data[info]);
+      data[info] = bigIntParser(data[info]);
     }
-
-    return students;
+    const student = data;
+    return student;
   } catch (error) {
     return error;
   }
-}
-
-
-
+};
 export default {
   getAllStudents,
   getStudentByRoll,
   getStudentsByDept,
   getStudentProfile,
-  getStudentsByCustom,
+  dashboardFilter
 };

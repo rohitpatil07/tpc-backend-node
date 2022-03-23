@@ -1,5 +1,5 @@
 import filterService from '../services/filterservice.js';
-import objectify from '../util/objectify.js';
+import objectify from '../util/objectUtility.js';
 
 const getAllStudents = async (req, res) => {
   try {
@@ -43,27 +43,16 @@ const getStudentsByDept = async (req, res) => {
   }
 };
 
-const getStudentsByCustom = async (req, res) => {
-  try {
-    let deptartment = String(req.params.dept);
-    let gender = String(req.params.gender);
-    let h= objectify.makect(gender,deptartment);
-    console.log(h);
-    let students = await filterService.getStudentsByCustom(h);
-    res.json({ students: students });
-  } catch (error) {
-    res.json(error);
+const dashboardFilter = async(req,res)=>{
+  try{
+    let data = req.body;
+    let select_fields = await objectify(data);
+    let where_queries = data.queries;
+    let student = await filterService.dashboardFilter(where_queries,select_fields);
+    res.json({ student: student });
   }
-};
-
-const getStudentsByUltimate = async (req, res) => {
-  try {
-    //let dept = String(req.params.dept);
-    object_select=objectify.ultimo_select(req.body.select);
-    object_where=objectify.ultimo_where(req.body.where);
-    let students = await filterService.getStudentsByUltimate(object_select,object_where);
-    res.json({ students: students });
-  } catch (error) {
+  catch (error) {
+    console.log(error);
     res.json(error);
   }
 }
@@ -73,6 +62,5 @@ export default {
   getStudentByRoll,
   getStudentsByDept,
   getStudentProfile,
-  getStudentsByCustom,
-  getStudentsByUltimate
+  dashboardFilter
 };
