@@ -1,4 +1,4 @@
-import downloadCsvService from "../services/downloadCsvService.js";
+import downloadCsvService from '../services/downloadCsvService.js';
 
 const download = async (req, res) => {
   try {
