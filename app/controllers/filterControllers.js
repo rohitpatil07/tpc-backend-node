@@ -43,24 +43,27 @@ const getStudentsByDept = async (req, res) => {
   }
 };
 
-const dashboardFilter = async(req,res)=>{
-  try{
+const dashboardFilter = async (req, res) => {
+  try {
     let data = req.body;
     let select_fields = await objectify(data);
     let where_queries = data.queries;
-    let student = await filterService.dashboardFilter(where_queries,select_fields);
+    let student = await filterService.dashboardFilter(
+      where_queries,
+      select_fields,
+    );
+    console.log(student);
     res.json({ student: student });
-  }
-  catch (error) {
+  } catch (error) {
     console.log(error);
     res.json(error);
   }
-}
+};
 
 export default {
   getAllStudents,
   getStudentByRoll,
   getStudentsByDept,
   getStudentProfile,
-  dashboardFilter
+  dashboardFilter,
 };

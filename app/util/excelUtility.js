@@ -1,6 +1,6 @@
-const createWorksheetCols = (data) => {
+const createWorksheetCols = (student_data) => {
   let columns = [];
-  for (let info in data[0]) {
+  for (let info in student_data) {
     columns.push(info);
   }
 
@@ -11,6 +11,7 @@ const createWorksheetCols = (data) => {
     if (column == 'email' || column == 'rait_email') {
       colwidth = 30;
     }
+
     const header = {
       header: column,
       key: column,

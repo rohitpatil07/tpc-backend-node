@@ -76,7 +76,7 @@ const getStudentsByDept = async (department) => {
   }
 };
 
-const dashboardFilter = async(where_queries,select_fields)=>{
+const dashboardFilter = async (where_queries, select_fields) => {
   try {
     let data = await prisma.students.findMany({
       where: where_queries,
@@ -97,5 +97,5 @@ export default {
   getStudentByRoll,
   getStudentsByDept,
   getStudentProfile,
-  dashboardFilter
+  dashboardFilter,
 };
