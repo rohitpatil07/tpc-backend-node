@@ -76,9 +76,32 @@ const getStudentsByDept = async (department) => {
   }
 };
 
+const getStudentsByCustom = async (h) =>{
+  try{
+    console.log(h)
+    let students = await prisma.students.findMany({
+      where: 
+        h
+      ,
+    });
+
+    for (let info in students) {
+      console.log(students[info]);
+      students[info] = bigIntParser(students[info]);
+    }
+
+    return students;
+  } catch (error) {
+    return error;
+  }
+}
+
+
+
 export default {
   getAllStudents,
   getStudentByRoll,
   getStudentsByDept,
   getStudentProfile,
+  getStudentsByCustom,
 };
