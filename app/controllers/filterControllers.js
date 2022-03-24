@@ -57,10 +57,23 @@ const dashboardFilter = async(req,res)=>{
   }
 }
 
+const cgpaGreater = async(req,res)=>{
+  try{
+    let data = req.params.data;
+    let student = await filterService.cgpaGreater(data);
+    res.json({ student: student });
+  }
+  catch (error) {
+    console.log(error);
+    res.json(error);
+  }
+}
+
 export default {
   getAllStudents,
   getStudentByRoll,
   getStudentsByDept,
   getStudentProfile,
-  dashboardFilter
+  dashboardFilter,
+  cgpaGreater,
 };
