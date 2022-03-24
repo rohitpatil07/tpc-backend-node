@@ -95,23 +95,33 @@ const dashboardFilter = async (where_queries, select_fields) => {
 
 const cgpaGreater = async (data) => {
   try {
-    let eligible = await prisma.academic_info.GroupBy({
-      By: ['rollno'],
-      having: {
+    let eligible = await prisma.academic_info.findMany({
+      where: {
         cgpa: { gte: data },
       },
-      select: {
-        students: true,
-        student_experience: true,
-        student_skillset: true,
-      },
-      orderBy: {
-        cgpa: 'desc',
-      },
+      
+      include:{
+        students:{
+          select:{
+            department:true,
+            first_name:true,
+            middle_name:true,
+            last_name:true,
+            email:true,
+            phone_number:true,
+            department:true,
+          }
+        },
+      }  
+      // include: {
+      //   students: true,
+      //   student_experience: true,
+      //   student_skillset: true,
+      // },
     });
     for (let info in eligible) {
       console.log(eligible[info]);
-      eligible[info] = bigIntParser(eligible[info]);
+      eligible[info].students = bigIntParser(eligible[info].students);
     }
     const student = eligible;
     return student;

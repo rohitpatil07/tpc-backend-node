@@ -62,7 +62,7 @@ const dashboardFilter = async (req, res) => {
 
 const cgpaGreater = async(req,res)=>{
   try{
-    let data = req.params.data;
+    let data = req.body.data;
     let student = await filterService.cgpaGreater(data);
     res.json({ student: student });
   }
