@@ -1,20 +1,21 @@
 import exceljs from 'exceljs';
 import excelUtility from '../util/excelUtility.js';
+import removeNestedObject from '../util/removeNestedObject.js';
 
 const download = async (students) => {
   try {
     const workbook = new exceljs.Workbook();
     const worksheet = workbook.addWorksheet('student_data');
 
-    worksheet.columns = excelUtility.createWorksheetCols(students);
+    const allstudents = removeNestedObject(students);
 
-    students.forEach((student) => {
+    worksheet.columns = excelUtility.createWorksheetCols(allstudents[0]);
+
+    allstudents.forEach((student) => {
       worksheet.addRow(student);
     });
 
     await workbook.csv.writeFile('export.csv');
-    // res.download('export.xlsx');
-    // return 'File Downloaded';
   } catch (error) {
     return error;
   }
