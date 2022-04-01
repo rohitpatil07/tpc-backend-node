@@ -15,7 +15,7 @@ const startServer = () => {
   app.use(helmet());
   app.use(
     cors({
-      origin: config.CORS_ORIGIN,
+      origin: '*',
       methods: ['GET', 'POST'],
       credentials: true,
     }),
