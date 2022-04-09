@@ -7,7 +7,7 @@
     "author": "Rohit Patil, Hridayesh Pdalkar, Soham Talekar, Gaurav Singh",
     "license": "MIT",
     "scripts": {
-        "dev": "yarn prisma db pull && yarn prisma generate && cross-env NODE_ENV=development nodemon index.js",
+        "dev": "cross-env NODE_ENV=development nodemon index.js",
         "start": "yarn prisma generate && cross-env NODE_ENV=production node index.js",
         "build": "yarn prisma generate"
     },
