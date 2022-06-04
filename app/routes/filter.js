@@ -7,4 +7,5 @@ router.get('/:rollno', filterControllers.getStudentByRoll);
 router.get('/dept/:dept', filterControllers.getStudentsByDept);
 router.get('/profile/:rollno', filterControllers.getStudentProfile);
 router.post('/dashboard', filterControllers.dashboardFilter);
+router.post('/cgpa', filterControllers.cgpaGreater);
 export default router;
