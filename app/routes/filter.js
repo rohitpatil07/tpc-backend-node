@@ -8,6 +8,6 @@ router.get('/dept/:dept', filterControllers.getStudentsByDept);
 router.get('/profile/:rollno', filterControllers.getStudentProfile);
 router.post('/dashboard', filterControllers.dashboardFilter);
 router.post('/cgpa', filterControllers.cgpaGreater);
-router.post('/eligiblestudents', filterControllers.getEligibleStudents);
+router.post('/notifstudents', filterControllers.getNotifStudents);
 
 export default router;
