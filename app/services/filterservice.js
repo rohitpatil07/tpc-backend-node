@@ -99,25 +99,19 @@ const cgpaGreater = async (data) => {
       where: {
         cgpa: { gte: data },
       },
-      
-      include:{
-        students:{
-          select:{
-            department:true,
-            first_name:true,
-            middle_name:true,
-            last_name:true,
-            email:true,
-            phone_number:true,
-            department:true,
-          }
+
+      include: {
+        students: {
+          select: {
+            department: true,
+            first_name: true,
+            middle_name: true,
+            last_name: true,
+            email: true,
+            phone_number: true,
+          },
         },
-      }  
-      // include: {
-      //   students: true,
-      //   student_experience: true,
-      //   student_skillset: true,
-      // },
+      },
     });
     for (let info in eligible) {
       console.log(eligible[info]);
@@ -130,6 +124,31 @@ const cgpaGreater = async (data) => {
   }
 };
 
+const getEligibleStudents = async (criteria) => {
+  try {
+    let students = [];
+    const eligible = await prisma.academic_info.findMany({
+      select: {
+        rollno: true,
+      },
+      where: {
+        deadkt: { lte: criteria.deadkt },
+        livekt: { lte: criteria.livekt },
+        gap: { lte: criteria.gap },
+      },
+    });
+
+    for (let student in eligible) {
+      console.log(eligible[student]['rollno']);
+      students.push(eligible[student]['rollno']);
+    }
+
+    return students;
+  } catch (error) {
+    return error;
+  }
+};
+
 export default {
   getAllStudents,
   getStudentByRoll,
@@ -137,4 +156,5 @@ export default {
   getStudentProfile,
   dashboardFilter,
   cgpaGreater,
+  getEligibleStudents,
 };

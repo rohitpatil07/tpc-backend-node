@@ -23,7 +23,10 @@ model academic_info {
   sem8_pointer     Float?   @db.Float
   cgpa             Float?   @db.Float
   be_percent       Float?   @db.Float
+  livekt           Int?
   students         students @relation(fields: [rollno], references: [rollno])
+  deadkt           Int?
+  gap              Int?
 
   @@index([rollno], map: "students_id_idx")
 }
