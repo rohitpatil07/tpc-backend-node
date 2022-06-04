@@ -10,4 +10,14 @@ const getEligibleStudents = async (req, res) => {
   }
 };
 
-export default { getEligibleStudents };
+const getCompanyWisePackage = async (req, res) => {
+  try {
+    const companyWisePackage =
+      await eligibilityServices.getCompanyWisePackage();
+    return res.json({ companyWisePackage });
+  } catch (error) {
+    res.json(error);
+  }
+};
+
+export default { getEligibleStudents, getCompanyWisePackage };
