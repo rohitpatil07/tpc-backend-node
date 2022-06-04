@@ -71,10 +71,11 @@ const cgpaGreater = async (req, res) => {
   }
 };
 
-const getEligibleStudents = async (req, res) => {
+const getNotifStudents = async (req, res) => {
   try {
     const criteria = req.body;
-    let student_list = await filterService.getEligibleStudents(criteria);
+    console.log(criteria);
+    let student_list = await filterService.getNotifStudents(criteria);
     return res.json({ student_list });
   } catch (error) {
     res.json(error);
@@ -88,5 +89,5 @@ export default {
   getStudentProfile,
   dashboardFilter,
   cgpaGreater,
-  getEligibleStudents,
+  getNotifStudents,
 };

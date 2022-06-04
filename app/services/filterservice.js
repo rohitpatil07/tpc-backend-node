@@ -5,7 +5,6 @@ const getAllStudents = async () => {
   try {
     let students = await prisma.students.findMany();
     for (let info in students) {
-      console.log(students[info]);
       students[info] = bigIntParser(students[info]);
     }
     return students;
@@ -26,7 +25,7 @@ const getStudentByRoll = async (rollno) => {
 
     return student;
   } catch (error) {
-    console.log(error);
+    return error;
   }
 };
 
@@ -66,7 +65,6 @@ const getStudentsByDept = async (department) => {
     });
 
     for (let info in students) {
-      console.log(students[info]);
       students[info] = bigIntParser(students[info]);
     }
 
@@ -83,7 +81,6 @@ const dashboardFilter = async (where_queries, select_fields) => {
       select: select_fields,
     });
     for (let info in data) {
-      console.log(data[info]);
       data[info] = bigIntParser(data[info]);
     }
     const student = data;
@@ -114,7 +111,6 @@ const cgpaGreater = async (data) => {
       },
     });
     for (let info in eligible) {
-      console.log(eligible[info]);
       eligible[info].students = bigIntParser(eligible[info].students);
     }
     const student = eligible;
@@ -124,10 +120,10 @@ const cgpaGreater = async (data) => {
   }
 };
 
-const getEligibleStudents = async (criteria) => {
+const getNotifStudents = async (criteria) => {
   try {
     let students = [];
-    const eligible = await prisma.academic_info.findMany({
+    let eligible = await prisma.academic_info.findMany({
       select: {
         rollno: true,
       },
@@ -135,11 +131,46 @@ const getEligibleStudents = async (criteria) => {
         deadkt: { lte: criteria.deadkt },
         livekt: { lte: criteria.livekt },
         gap: { lte: criteria.gap },
+        be_percent: { gte: criteria.be_percent },
+        cgpa: { gte: criteria.cgpa },
+        twelveth_percent: { gte: criteria.twelveth_percent },
+        tenth_percent: { gte: criteria.tenth_percent },
       },
     });
 
     for (let student in eligible) {
-      console.log(eligible[student]['rollno']);
+      students.push(eligible[student]['rollno']);
+    }
+
+    eligible = await prisma.students.findMany({
+      select: {
+        rollno: true,
+      },
+      where: {
+        rollno: { in: students },
+        no_of_offers: { lte: 1 },
+      },
+    });
+
+    students = [];
+    for (let student in eligible) {
+      students.push(eligible[student]['rollno']);
+    }
+
+    const pack_diff = 150000;
+
+    eligible = await prisma.student_placement_details.findMany({
+      select: {
+        rollno: true,
+      },
+      where: {
+        rollno: { in: students },
+        package_one: { lte: criteria.package - pack_diff },
+      },
+    });
+
+    students = [];
+    for (let student in eligible) {
       students.push(eligible[student]['rollno']);
     }
 
@@ -156,5 +187,5 @@ export default {
   getStudentProfile,
   dashboardFilter,
   cgpaGreater,
-  getEligibleStudents,
+  getNotifStudents,
 };
