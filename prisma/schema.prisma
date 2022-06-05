@@ -26,7 +26,7 @@ model academic_info {
   livekt           Int?
   deadkt           Int?
   gap              Int?
-
+  students         students @relation(fields: [rollno], references: [rollno])
   @@index([rollno], map: "students_id_idx")
 }
 
@@ -48,7 +48,7 @@ model other_info {
   extracuricular_one   String? @db.VarChar(100)
   extracuricular_two   String? @db.VarChar(100)
   extracuricular_three String? @db.VarChar(100)
-
+  students             students @relation(fields: [rollno], references: [rollno])
   @@index([rollno], map: "students_id_idx")
 }
 
@@ -62,7 +62,7 @@ model student_experience {
   project_three   String? @db.VarChar(400)
   pref_lang       String? @db.VarChar(10)
   technologies    String? @db.VarChar(400)
-
+  students        students @relation(fields: [rollno], references: [rollno])
   @@index([rollno], map: "student_id_idx")
 }
 
@@ -74,6 +74,7 @@ model student_placement_details {
   placed_org_two   String? @db.VarChar(50)
   package_one      Float?  @db.Float
   package_two      Float?  @db.Float
+  students         students @relation(fields: [rollno], references: [rollno])
 
   @@index([rollno], map: "students_id_idx")
 }
@@ -89,6 +90,7 @@ model student_skillset {
   acad_achievement_three String? @db.VarChar(20)
   acad_achievement_four  String? @db.VarChar(20)
   career_obj             String? @db.VarChar(300)
+   students               students @relation(fields: [rollno], references: [rollno])
 
   @@index([rollno], map: "students_id_idx")
 }
@@ -109,4 +111,9 @@ model students {
   department   String? @db.VarChar(10)
   batch        Int?
   rait_email   String? @db.VarChar(50)
+  other_info                other_info?
+  student_skillset          student_skillset?
+  academic_info             academic_info?
+  student_placement_details student_placement_details?
+  student_experience        student_experience?
 }
