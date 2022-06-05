@@ -9,6 +9,7 @@ const getEligibleStudents = async (req, res) => {
     return res.json(error);
   }
 };
+
 const getSelectedStudentsCompanyWise = async (req, res) => {
   try {
     const students = await eligibilityServices.getSelectedStudentsCompanyWise();
@@ -27,4 +28,16 @@ const getSelectedStudentsLpaWise = async (req, res) => {
     return res.json(error);
   }
 }; 
-export default { getEligibleStudents,getSelectedStudentsCompanyWise,getSelectedStudentsLpaWise };
+
+
+const getCompanyWisePackage = async (req, res) => {
+  try {
+    const companyWisePackage =
+      await eligibilityServices.getCompanyWisePackage();
+    return res.json({ companyWisePackage });
+  } catch (error) {
+    res.json(error);
+  }
+};
+
+export default { getEligibleStudents,getSelectedStudentsCompanyWise,getSelectedStudentsLpaWise ,getCompanyWisePackage};
