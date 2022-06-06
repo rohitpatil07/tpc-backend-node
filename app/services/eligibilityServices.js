@@ -5,7 +5,7 @@ const getEligibleStudents = async () => {
     let package_one_sorting = await prisma.student_placement_details.findMany({
       take: 10,
       select: {
-        rollno: true,
+        roll_no: true,
         placed_org_one: true,
         package_one: true,
         placed_org_two: true,
@@ -18,7 +18,7 @@ const getEligibleStudents = async () => {
     let package_two_sorting = await prisma.student_placement_details.findMany({
       take: 10,
       select: {
-        rollno: true,
+        roll_no: true,
         placed_org_one: true,
         package_one: true,
         placed_org_two: true,
@@ -218,6 +218,7 @@ const getCompanyWisePackage = async () => {
     });
 
     let companies_set = new Set();
+
     package_data_org1.forEach((data) => {
       companies_set.add(data['placed_org_one']);
     });
@@ -225,7 +226,6 @@ const getCompanyWisePackage = async () => {
     let package_data_org2 = await prisma.student_placement_details.findMany({
       select: {
         placed_org_two: true,
-        // package_two: true,
       },
       where: {
         package_two: { gte: 0 },
@@ -234,6 +234,19 @@ const getCompanyWisePackage = async () => {
 
     package_data_org2.forEach((data) => {
       companies_set.add(data['placed_org_two']);
+    });
+
+    let package_data_org3 = await prisma.student_placement_details.findMany({
+      select: {
+        placed_org_three: true,
+      },
+      where: {
+        package_three: { gte: 0 },
+      },
+    });
+
+    package_data_org3.forEach((data) => {
+      companies_set.add(data['placed_org_three']);
     });
 
     //get unique company names
@@ -246,7 +259,6 @@ const getCompanyWisePackage = async () => {
       let data = await getPackagesPerCompany(companies[company]);
       packages.push(data);
     }
-    console.log(packages);
 
     return packages;
   } catch (error) {
@@ -258,7 +270,6 @@ const getPackagesPerCompany = async (company) => {
   let packages_data = {};
   let packages_set = new Set();
   let packages = [];
-  console.log(company);
 
   let package_data1 = await prisma.student_placement_details.findMany({
     select: {
@@ -278,13 +289,22 @@ const getPackagesPerCompany = async (company) => {
     },
   });
 
+  let package_data3 = await prisma.student_placement_details.findMany({
+    select: {
+      package_three: true,
+    },
+    where: {
+      placed_org_three: company,
+    },
+  });
+
   package_data1.forEach((data) => packages_set.add(data['package_one']));
   package_data2.forEach((data) => packages_set.add(data['package_two']));
+  package_data3.forEach((data) => packages_set.add(data['package_three']));
   packages_set.forEach((data) => packages.push(data));
 
   packages_data[company] = packages;
 
-  // console.log(packages_data);
   return packages_data;
 };
 

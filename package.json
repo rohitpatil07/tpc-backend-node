@@ -26,10 +26,10 @@
         "eslint-plugin-react-hooks": "^4.3.0",
         "nodemon": "^2.0.15",
         "prettier": "^2.5.1",
-        "prisma": "^3.10.0"
+        "prisma": "3.10.0"
     },
     "dependencies": {
-        "@prisma/client": "^3.10.0",
+        "@prisma/client": "3.10.0",
         "@types/json-bigint": "^1.0.1",
         "adm-zip": "^0.5.9",
         "cors": "^2.8.5",
