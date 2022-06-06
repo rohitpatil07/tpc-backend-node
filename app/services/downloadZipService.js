@@ -20,7 +20,7 @@ const download = async (students) => {
             var options = {
                 format: "A4",
                 orientation: "portrait",
-                border: "10mm",
+                border: "0mm",
             }
             var document = {
                 html: html,
@@ -50,19 +50,19 @@ const download = async (students) => {
                 const data = zip.toBuffer();
 			    zip.writeZip("./export.zip");
         },5000);
-        setTimeout(()=>{
-            if (fs.existsSync(`./export.zip`)){	     
-                fs.unlinkSync(`./export.zip`, function (err) {
-                    if (err)
-                        throw err;
-                    console.log("deleted zip file")
-                });
-            }
-            var CleanDir = fs.readdirSync('./Zip');
-            for(var v = 0; v < CleanDir.length;v++){
-                fs.unlinkSync(`./Zip/output${v}.pdf`);
-            }
-        },10000);
+        // setTimeout(()=>{
+        //     if (fs.existsSync(`./export.zip`)){	     
+        //         fs.unlinkSync(`./export.zip`, function (err) {
+        //             if (err)
+        //                 throw err;
+        //             console.log("deleted zip file")
+        //         });
+        //     }
+        //     var CleanDir = fs.readdirSync('./Zip');
+        //     for(var v = 0; v < CleanDir.length;v++){
+        //         fs.unlinkSync(`./Zip/output${v}.pdf`);
+        //     }
+        // },10000);
 
     } catch (error) {
         return error;

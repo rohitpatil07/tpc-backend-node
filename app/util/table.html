@@ -269,15 +269,27 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="table.css" />
+		<!-- <link rel="stylesheet" href="table.css" /> -->
 		<title>Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
 	</head>
-    <style>
-        body {
+    <style>   
+
+/* @font-face {
+    font-family: "Poppins";
+    src: url(data:font/truetype;charset=utf-8;base64,aHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1Qb3BwaW5zOndnaHRANDAwOzYwMCZkaXNwbGF5PXN3YX==)
+} */
+
+
+
+body {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	/* font-family: "Poppins", sans-serif; */
+	font-family: "Poppins", sans-serif;
+  font-style: normal; 
 }
 table,
 th,
@@ -298,7 +310,7 @@ td {
 	color: white;
 	display: flex;
 	justify-content: space-between;
-	height: 180px;
+	height: 160px;
 	border-bottom: 23px solid black;
 	margin-top: 0;
 	font-size: 16px;
@@ -307,8 +319,8 @@ td {
 .base {
 	color: white;
 	background-color: #9f1d37;
-	width: 425px;
-	height: 50px;
+	width: 290px;
+	height: 35px;
 	text-align: left;
 	font-size: 25px;
 	margin-left: 0;
@@ -365,7 +377,11 @@ td {
 
 .section {
 	display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
 	gap: 2rem;
+  height: 90%;
 }
 
 .info {
@@ -404,7 +420,7 @@ td {
 
 .dot {
 	position: relative;
-	left: -41px;
+	left: -76px;
 	color: black;
 }
 
@@ -414,11 +430,11 @@ td {
 		<div class="pdf">
 			<div class="udetail">
 				<div class="info">
-					<h3 class="uinfo">Name: {{this.first_name}}</h3>
+					<h3 class="uinfo">Name: {{this.first_name}} {{this.middle_name}} {{this.last_name}}</h3>
 					<h3 class="uinfo">Gender: {{this.gender}}</h3>
 					<h3 class="uinfo">Email: {{this.email}}</h3>
 					<h3 class="uinfo">Mob: {{this.phone_number}}</h3>
-					<h3 class="uinfo">LinkedIn:</h3>
+					<h3 class="uinfo">LinkedIn: {{this.linkedin}}</h3>
 				</div>
 				<div>
 					<img id="pimage" src="download.png" />
@@ -476,11 +492,17 @@ td {
 						</table>
 					</div>
 					<div>
+            {{#ifCond this.student_skillset.acad_achievement_one "!=" null}}
 						<h3 class="base">Academic Achievements</h3>
+            {{/ifCond}}
 						<ul>
+              {{#ifCond this.student_skillset.acad_achievement_one "!=" null}}
 							<li>1. {{this.student_skillset.acad_achievement_one}}</li>
-							<li>2. {{this.student_skillset.acad_achievement_two}}</li>
+							{{/ifCond}} {{#ifCond this.student_skillset.acad_achievement_two "!=" null}}
+              <li>2. {{this.student_skillset.acad_achievement_two}}</li>
+              {{/ifCond}} {{#ifCond this.student_skillset.acad_achievement_three "!=" null}}
 							<li>3. {{this.student_skillset.acad_achievement_three}}</li>
+              {{/ifCond}} 
 						</ul>
 					</div>
 					<div>
@@ -488,59 +510,95 @@ td {
 						<ul>
 							<li>1. Prefered language: {{this.student_experience.pref_lang}}</li>
 							<li>2. Technologies known: {{this.student_experience.technologies}}</li>
+              {{#ifCond this.other_info.hobbies "!=" null}}
 							<li>3. Hobbies: {{this.other_info.hobbies}}</li>
+              {{/ifCond}}
 						</ul>
 					</div>
 				</div>
 				<div class="line"></div>
 				<div class="right side">
 					<div>
-						<h1 class="base1"><span class="dot">●</span> Certifications ▶▶▶</h1>
-						<ul>
+            {{#ifCond this.student_skillset.certificate_one "!=" null}}
+						<h1 class="base1"> Certifications ▶▶▶</h1>
+						{{/ifCond}}
+            <ul>
                             <!-- {{this.student_skillset.certificate_one}} -->
-							<li>1.</li>
-							<li>2.</li>
-							<li>3.</li>
+              {{#ifCond this.student_skillset.certificate_one "!=" null}}
+							<li>1. {{this.student_skillset.certificate_one}}</li>
+							{{/ifCond}} {{#ifCond this.student_skillset.certificate_two "!=" null}}
+              <li>2. {{this.student_skillset.certificate_two}}</li>
+              {{/ifCond}} {{#ifCond this.student_skillset.certificate_three "!=" null}}
+							<li>3. {{this.student_skillset.certificate_three}}</li>
+              {{/ifCond}}
 						</ul>
 					</div>
 					<div class="pin">
-						<h1 class="base1"><span class="dot">●</span> Projects and internships ▶▶▶</h1>
-						<div>
+            {{#ifCond this.student_experience.project_one "!=" null}}
+            {{#ifCond this.student_experience.intership_one "!=" null}}
+						<h1 class="base1"> Projects and internships ▶▶▶</h1>
+						{{/ifCond}}
+            {{/ifCond}}
+            <div>
+              {{#ifCond this.student_experience.project_one "!=" null}}
 							<h3 class="subbase1">Projects</h3>
+              {{/ifCond}}
 							<ul>
-                                <li>1. {{this.student_experience.project_one}}</li>
-							    <li>2. {{this.student_experience.project_two}}</li>
+                {{#ifCond this.student_experience.project_one "!=" null}}
+                <li>1. {{this.student_experience.project_one}}</li>
+                {{/ifCond}} {{#ifCond this.student_experience.project_two "!=" null}}
+							  <li>2. {{this.student_experience.project_two}}</li>
+                {{/ifCond}} {{#ifCond this.student_experience.project_three "!=" null}}
 								<li>3. {{this.student_experience.project_three}}</li>
+                {{/ifCond}}
 							</ul>
 						</div>
 						<div style="display: inline-block">
+              {{#ifCond this.student_experience.intership_one "!=" null}}
 							<h3 class="subbase1">Internships</h3>
+              {{/ifCond}}
 							<ul>
+                {{#ifCond this.student_experience.intership_one "!=" null}}
 								<li>1. {{this.student_experience.intership_one}}</li>
+                {{/ifCond}} {{#ifCond this.student_experience.intership_two "!=" null}}
 								<li>2. {{this.student_experience.intership_two}}</li>
+                {{/ifCond}} {{#ifCond this.student_experience.intership_three "!=" null}}
 								<li>3. {{this.student_experience.intership_three}}</li>
+                {{/ifCond}}
 							</ul>
 						</div>
 						<div>
 							<div style="display: inline-block">
-								<h1 class="base1">
-									<span class="dot">●</span> Extra curricular Achievements ▶▶▶
+								{{#ifCond this.other_info.extracuricular_one "!=" null}}
+                <h1 class="base1">
+									 Extra curricular Achievements ▶▶▶
 								</h1>
+                {{/ifCond}}
 								<ul>
                                     <!-- {{this.other_info.extracuricular_one}} -->
-									<li>1.</li>
-							        <li>2.</li>
-							        <li>3.</li>
+                      {{#ifCond this.other_info.extracuricular_one "!=" null}}
+                      <li>1. {{this.other_info.extracuricular_one}}</li>
+                      {{/ifCond}} {{#ifCond this.other_info.extracuricular_two "!=" null}}
+							        <li>2. {{this.other_info.extracuricular_two}}</li>
+                      {{/ifCond}} {{#ifCond this.other_info.extracuricular_three "!=" null}}
+							        <li>3. {{this.other_info.extracuricular_three}}</li>
+                      {{/ifCond}}
 								</ul>
 							</div>
+              {{#ifCond this.other_info.pos_of_res_one "!=" null}}
 							<h1 class="base1">
-								<span class="dot">●</span> Position of Responsibility ▶▶▶
+								 Position of Responsibility ▶▶▶
 							</h1>
+              {{/ifCond}}
 							<ul>
                                 <!-- {{this.other_info.pos_of_res_one}} -->
-								<li>1.</li>
-							    <li>2.</li>
-							    <li>3.</li>
+                  {{#ifCond this.other_info.pos_of_res_one "!=" null}}
+								  <li>1. {{this.other_info.pos_of_res_one}}</li>
+                  {{/ifCond}} {{#ifCond this.other_info.pos_of_res_two "!=" null}}
+							    <li>2. {{this.other_info.pos_of_res_two}}</li>
+                  {{/ifCond}} {{#ifCond this.other_info.pos_of_res_three "!=" null}}
+							    <li>3. {{this.other_info.pos_of_res_three}}</li>
+                  {{/ifCond}}
 							</ul>
 						</div>
 					</div>
