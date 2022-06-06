@@ -31,6 +31,7 @@
     "dependencies": {
         "@prisma/client": "^3.10.0",
         "@types/json-bigint": "^1.0.1",
+        "adm-zip": "^0.5.9",
         "cors": "^2.8.5",
         "cross-env": "^7.0.3",
         "dotenv": "^16.0.0",
@@ -40,6 +41,8 @@
         "helmet": "^5.0.2",
         "json-bigint": "^1.0.0",
         "mysql2": "^2.3.3",
-        "winston": "^3.6.0"
+        "pdf-creator-node": "^2.3.4",
+        "winston": "^3.6.0",
+        "yarn": "^1.22.18"
     }
 }
