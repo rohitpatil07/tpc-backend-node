@@ -10,78 +10,75 @@ datasource db {
 }
 
 model academic_info {
-  id                           BigInt    @id @default(autoincrement())
-  tenth_percent                Decimal?  @db.Decimal(6, 2)
-  twelveth_percent             Decimal?  @db.Decimal(6, 2)
-  sem1_pointer                 Decimal?  @db.Decimal(6, 2)
-  sem2_pointer                 Decimal?  @db.Decimal(6, 2)
-  sem3_pointer                 Decimal?  @db.Decimal(6, 2)
-  sem4_pointer                 Decimal?  @db.Decimal(6, 2)
-  sem5_pointer                 Decimal?  @db.Decimal(6, 2)
-  sem6_pointer                 Decimal?  @db.Decimal(6, 2)
-  sem7_pointer                 Decimal?  @db.Decimal(6, 2)
-  sem8_pointer                 Decimal?  @db.Decimal(6, 2)
-  cgpa                         Decimal?  @db.Decimal(6, 2)
-  be_percent                   Decimal?  @db.Decimal(6, 2)
-  student_id                   BigInt?
-  diploma_completion_date      String?   @db.VarChar(20)
-  diploma_obtained_marks       Int?      @db.UnsignedInt
-  diploma_percent              Decimal?  @db.Decimal(6, 2)
-  diploma_total_marks          Int?      @db.UnsignedInt
-  masters_cgpa                 Decimal?  @db.Decimal(6, 2)
-  masters_percent              Decimal?  @db.Decimal(6, 2)
-  masters_sem1_completion_date String?   @db.VarChar(20)
-  masters_sem1_obtained_marks  Int?      @db.UnsignedInt
-  masters_sem1_pointer         Decimal?  @db.Decimal(6, 2)
-  masters_sem1_total_marks     Int?      @db.UnsignedInt
-  masters_sem2_completion_date String?   @db.VarChar(20)
-  masters_sem2_obtained_marks  Int?      @db.UnsignedInt
-  masters_sem2_pointer         Decimal?  @db.Decimal(6, 2)
-  masters_sem2_total_marks     Int?      @db.UnsignedInt
-  masters_sem3_completion_date String?   @db.VarChar(20)
-  masters_sem3_obtained_marks  Int?      @db.UnsignedInt
-  masters_sem3_pointer         Decimal?  @db.Decimal(6, 2)
-  masters_sem3_total_marks     Int?      @db.UnsignedInt
-  masters_sem4_completion_date String?   @db.VarChar(20)
-  masters_sem4_obtained_marks  Int?      @db.UnsignedInt
-  masters_sem4_pointer         Decimal?  @db.Decimal(6, 2)
-  masters_sem4_total_marks     Int?      @db.UnsignedInt
-  sem1_completion_date         String?   @db.VarChar(20)
-  sem1_obtained_marks          Int?      @db.UnsignedInt
-  sem1_total_marks             Int?      @db.UnsignedInt
-  sem2_completion_date         String?   @db.VarChar(20)
-  sem2_obtained_marks          Int?      @db.UnsignedInt
-  sem2_total_marks             Int?      @db.UnsignedInt
-  sem3_completion_date         String?   @db.VarChar(20)
-  sem3_obtained_marks          Int?      @db.UnsignedInt
-  sem3_total_marks             Int?      @db.UnsignedInt
-  sem4_completion_date         String?   @db.VarChar(20)
-  sem4_obtained_marks          Int?      @db.UnsignedInt
-  sem4_total_marks             Int?      @db.UnsignedInt
-  sem5_completion_date         String?   @db.VarChar(20)
-  sem5_obtained_marks          Int?      @db.UnsignedInt
-  sem5_total_marks             Int?      @db.UnsignedInt
-  sem6_completion_date         String?   @db.VarChar(20)
-  sem6_obtained_marks          Int?      @db.UnsignedInt
-  sem6_total_marks             Int?      @db.UnsignedInt
-  sem7_completion_date         String?   @db.VarChar(20)
-  sem7_obtained_marks          Int?      @db.UnsignedInt
-  sem7_total_marks             Int?      @db.UnsignedInt
-  sem8_completion_date         String?   @db.VarChar(20)
-  sem8_obtained_marks          Int?      @db.UnsignedInt
-  sem8_total_marks             Int?      @db.UnsignedInt
-  tenth_completion_date        String?   @db.VarChar(20)
-  tenth_obtained_marks         Int?      @db.UnsignedInt
-  tenth_total_marks            Int?      @db.UnsignedInt
-  twelveth_completion_date     String?   @db.VarChar(20)
-  twelveth_obtained_marks      Int?      @db.UnsignedInt
-  twelveth_total_marks         Int?      @db.UnsignedInt
+  roll_no                      String   @id @db.VarChar(10)
+  tenth_percent                Decimal? @db.Decimal(6, 2)
+  tenth_completion_date        String?  @db.VarChar(20)
+  tenth_obtained_marks         Int?     @db.UnsignedInt
+  tenth_total_marks            Int?     @db.UnsignedInt
+  twelveth_percent             Decimal? @db.Decimal(6, 2)
+  twelveth_completion_date     String?  @db.VarChar(20)
+  twelveth_obtained_marks      Int?     @db.UnsignedInt
+  twelveth_total_marks         Int?     @db.UnsignedInt
+  diploma_percent              Decimal? @db.Decimal(6, 2)
+  diploma_completion_date      String?  @db.VarChar(20)
+  diploma_obtained_marks       Int?     @db.UnsignedInt
+  diploma_total_marks          Int?     @db.UnsignedInt
+  sem1_pointer                 Decimal? @db.Decimal(6, 2)
+  sem1_completion_date         String?  @db.VarChar(20)
+  sem1_obtained_marks          Int?     @db.UnsignedInt
+  sem1_total_marks             Int?     @db.UnsignedInt
+  sem2_pointer                 Decimal? @db.Decimal(6, 2)
+  sem2_completion_date         String?  @db.VarChar(20)
+  sem2_obtained_marks          Int?     @db.UnsignedInt
+  sem2_total_marks             Int?     @db.UnsignedInt
+  sem3_pointer                 Decimal? @db.Decimal(6, 2)
+  sem3_completion_date         String?  @db.VarChar(20)
+  sem3_obtained_marks          Int?     @db.UnsignedInt
+  sem3_total_marks             Int?     @db.UnsignedInt
+  sem4_pointer                 Decimal? @db.Decimal(6, 2)
+  sem4_completion_date         String?  @db.VarChar(20)
+  sem4_obtained_marks          Int?     @db.UnsignedInt
+  sem4_total_marks             Int?     @db.UnsignedInt
+  sem5_pointer                 Decimal? @db.Decimal(6, 2)
+  sem5_completion_date         String?  @db.VarChar(20)
+  sem5_obtained_marks          Int?     @db.UnsignedInt
+  sem5_total_marks             Int?     @db.UnsignedInt
+  sem6_pointer                 Decimal? @db.Decimal(6, 2)
+  sem6_completion_date         String?  @db.VarChar(20)
+  sem6_obtained_marks          Int?     @db.UnsignedInt
+  sem6_total_marks             Int?     @db.UnsignedInt
+  sem7_pointer                 Decimal? @db.Decimal(6, 2)
+  sem7_completion_date         String?  @db.VarChar(20)
+  sem7_obtained_marks          Int?     @db.UnsignedInt
+  sem7_total_marks             Int?     @db.UnsignedInt
+  sem8_pointer                 Decimal? @db.Decimal(6, 2)
+  sem8_completion_date         String?  @db.VarChar(20)
+  sem8_obtained_marks          Int?     @db.UnsignedInt
+  sem8_total_marks             Int?     @db.UnsignedInt
+  cgpa                         Decimal? @db.Decimal(6, 2)
+  be_percent                   Decimal? @db.Decimal(6, 2)
+  masters_sem1_pointer         Decimal? @db.Decimal(6, 2)
+  masters_sem1_completion_date String?  @db.VarChar(20)
+  masters_sem1_obtained_marks  Int?     @db.UnsignedInt
+  masters_sem1_total_marks     Int?     @db.UnsignedInt
+  masters_sem2_pointer         Decimal? @db.Decimal(6, 2)
+  masters_sem2_completion_date String?  @db.VarChar(20)
+  masters_sem2_obtained_marks  Int?     @db.UnsignedInt
+  masters_sem2_total_marks     Int?     @db.UnsignedInt
+  masters_sem3_pointer         Decimal? @db.Decimal(6, 2)
+  masters_sem3_completion_date String?  @db.VarChar(20)
+  masters_sem3_obtained_marks  Int?     @db.UnsignedInt
+  masters_sem3_total_marks     Int?     @db.UnsignedInt
+  masters_sem4_pointer         Decimal? @db.Decimal(6, 2)
+  masters_sem4_completion_date String?  @db.VarChar(20)
+  masters_sem4_obtained_marks  Int?     @db.UnsignedInt
+  masters_sem4_total_marks     Int?     @db.UnsignedInt
+  masters_cgpa                 Decimal? @db.Decimal(6, 2)
+  masters_percent              Decimal? @db.Decimal(6, 2)
+  livekt                       Int?
   deadkt                       Int?
   gap                          Int?
-  livekt                       Int?
-  students                     students? @relation(fields: [student_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "academic_info_student_id_49c56acd_fk_students_id")
-
-  @@index([student_id], map: "academic_info_student_id_49c56acd_fk_students_id")
+  students                     students @relation(fields: [roll_no], references: [roll_no], onDelete: NoAction, onUpdate: NoAction, map: "academic_info_roll_no_fbf1c923_fk_students_roll_no")
 }
 
 model admins {
@@ -128,12 +125,12 @@ model django_admin_log {
   action_flag         Int                  @db.UnsignedSmallInt
   change_message      String               @db.LongText
   content_type_id     Int?
-  user_id             BigInt
+  user_id             String               @db.VarChar(10)
   django_content_type django_content_type? @relation(fields: [content_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "django_admin_log_content_type_id_c4bce8eb_fk_django_co")
-  students            students             @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "django_admin_log_user_id_c564eba6_fk_students_id")
+  students            students             @relation(fields: [user_id], references: [roll_no], onDelete: NoAction, onUpdate: NoAction, map: "django_admin_log_user_id_c564eba6_fk_students_roll_no")
 
   @@index([content_type_id], map: "django_admin_log_content_type_id_c4bce8eb_fk_django_co")
-  @@index([user_id], map: "django_admin_log_user_id_c564eba6_fk_students_id")
+  @@index([user_id], map: "django_admin_log_user_id_c564eba6_fk_students_roll_no")
 }
 
 model django_content_type {
@@ -178,18 +175,18 @@ model drf_api_logs {
 }
 
 model eligible_students {
-  id             BigInt       @id @default(autoincrement())
-  job_opening_id BigInt
-  student_id     BigInt
-  job_openings   job_openings @relation(fields: [job_opening_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "eligible_students_job_opening_id_cdf246c8_fk_job_openings_id")
-  students       students     @relation(fields: [student_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "eligible_students_student_id_0d78fa18_fk_students_id")
+  id           BigInt       @id @default(autoincrement())
+  job_id       Int
+  roll_no      String       @db.VarChar(10)
+  job_openings job_openings @relation(fields: [job_id], references: [job_id], onDelete: NoAction, onUpdate: NoAction, map: "eligible_students_job_id_490935ec_fk_job_openings_job_id")
+  students     students     @relation(fields: [roll_no], references: [roll_no], onDelete: NoAction, onUpdate: NoAction, map: "eligible_students_roll_no_59002551_fk_students_roll_no")
 
-  @@index([job_opening_id], map: "eligible_students_job_opening_id_cdf246c8_fk_job_openings_id")
-  @@index([student_id], map: "eligible_students_student_id_0d78fa18_fk_students_id")
+  @@index([job_id], map: "eligible_students_job_id_490935ec_fk_job_openings_job_id")
+  @@index([roll_no], map: "eligible_students_roll_no_59002551_fk_students_roll_no")
 }
 
 model job_openings {
-  id                BigInt              @id @default(autoincrement())
+  job_id            Int                 @id @default(autoincrement())
   email             String?             @db.VarChar(50)
   batch             Int?
   valid_till        String?             @db.VarChar(50)
@@ -200,84 +197,78 @@ model job_openings {
   diploma_percent   Decimal?            @db.Decimal(6, 2)
   be_percent        Decimal?            @db.Decimal(6, 2)
   cgpa              Decimal?            @db.Decimal(6, 2)
+  notice            String?             @db.LongText
   live_kt           Int?
   dead_kt           Int?
-  notice            String?             @db.LongText
   gap               Int?
   package           String?             @db.VarChar(50)
   eligible_students eligible_students[]
 }
 
 model other_info {
-  id                   BigInt    @id @default(autoincrement())
-  hobbies              String?   @db.VarChar(1000)
-  pos_of_res_one       String?   @db.VarChar(50)
-  pos_of_res_two       String?   @db.VarChar(50)
-  pos_of_res_three     String?   @db.VarChar(50)
-  pos_of_res_four      String?   @db.VarChar(50)
-  extracuricular_one   String?   @db.VarChar(500)
-  extracuricular_two   String?   @db.VarChar(500)
-  extracuricular_three String?   @db.VarChar(500)
-  student_id           BigInt?
-  students             students? @relation(fields: [student_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "other_info_student_id_8a20c5be_fk_students_id")
-
-  @@index([student_id], map: "other_info_student_id_8a20c5be_fk_students_id")
+  roll_no              String   @id @db.VarChar(10)
+  hobbies              String?  @db.VarChar(1000)
+  pos_of_res_one       String?  @db.VarChar(50)
+  pos_of_res_two       String?  @db.VarChar(50)
+  pos_of_res_three     String?  @db.VarChar(50)
+  pos_of_res_four      String?  @db.VarChar(50)
+  extracuricular_one   String?  @db.VarChar(500)
+  extracuricular_two   String?  @db.VarChar(500)
+  extracuricular_three String?  @db.VarChar(500)
+  students             students @relation(fields: [roll_no], references: [roll_no], onDelete: NoAction, onUpdate: NoAction, map: "other_info_roll_no_3ca2010f_fk_students_roll_no")
 }
 
 model student_experience {
-  id               BigInt    @id @default(autoincrement())
-  internship_one   String?   @db.VarChar(1000)
-  internship_two   String?   @db.VarChar(1000)
-  internship_three String?   @db.VarChar(1000)
-  project_one      String?   @db.VarChar(1000)
-  project_two      String?   @db.VarChar(1000)
-  project_three    String?   @db.VarChar(1000)
-  pref_lang        String?   @db.VarChar(50)
-  technologies     String?   @db.VarChar(1000)
-  student_id       BigInt?
-  students         students? @relation(fields: [student_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "student_experience_student_id_69de8afc_fk_students_id")
-
-  @@index([student_id], map: "student_experience_student_id_69de8afc_fk_students_id")
+  roll_no          String   @id @db.VarChar(10)
+  internship_one   String?  @db.VarChar(1000)
+  internship_two   String?  @db.VarChar(1000)
+  internship_three String?  @db.VarChar(1000)
+  project_one      String?  @db.VarChar(1000)
+  project_two      String?  @db.VarChar(1000)
+  project_three    String?  @db.VarChar(1000)
+  pref_lang        String?  @db.VarChar(50)
+  technologies     String?  @db.VarChar(1000)
+  students         students @relation(fields: [roll_no], references: [roll_no], onDelete: NoAction, onUpdate: NoAction, map: "student_experience_roll_no_7b07ffdf_fk_students_roll_no")
 }
 
 model student_placement_details {
-  id               BigInt    @id @default(autoincrement())
-  offer_letter_one String    @db.VarChar(100)
-  offer_letter_two String    @db.VarChar(100)
-  placed_org_one   String?   @db.VarChar(50)
-  placed_org_two   String?   @db.VarChar(50)
-  package_one      Decimal?  @db.Decimal(12, 4)
-  package_two      Decimal?  @db.Decimal(12, 4)
-  student_id       BigInt?
-  students         students? @relation(fields: [student_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "student_placement_details_student_id_19125985_fk_students_id")
-
-  @@index([student_id], map: "student_placement_details_student_id_19125985_fk_students_id")
+  roll_no            String   @id @db.VarChar(10)
+  offer_letter_one   String   @db.VarChar(100)
+  offer_letter_two   String   @db.VarChar(100)
+  placed_org_one     String?  @db.VarChar(50)
+  placed_org_two     String?  @db.VarChar(50)
+  package_one        Decimal? @db.Decimal(12, 4)
+  package_two        Decimal? @db.Decimal(12, 4)
+  offer_letter_three String   @db.VarChar(100)
+  package_three      Decimal? @db.Decimal(12, 4)
+  placed_company     String?  @db.VarChar(50)
+  placed_org_three   String?  @db.VarChar(50)
+  placed_package     Decimal? @db.Decimal(12, 4)
+  students           students @relation(fields: [roll_no], references: [roll_no], onDelete: NoAction, onUpdate: NoAction, map: "student_placement_details_roll_no_1fe379f9_fk_students_roll_no")
 }
 
 model student_skillset {
-  id                     BigInt    @id @default(autoincrement())
-  certificate_one        String    @db.VarChar(100)
-  certificate_two        String    @db.VarChar(100)
-  certificate_three      String    @db.VarChar(100)
-  certificate_four       String    @db.VarChar(100)
-  acad_achievement_one   String?   @db.VarChar(50)
-  acad_achievement_two   String?   @db.VarChar(50)
-  acad_achievement_three String?   @db.VarChar(50)
-  acad_achievement_four  String?   @db.VarChar(50)
-  career_obj             String?   @db.VarChar(1000)
-  student_id             BigInt?
-  students               students? @relation(fields: [student_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "student_skillset_student_id_5091c8e4_fk_students_id")
-
-  @@index([student_id], map: "student_skillset_student_id_5091c8e4_fk_students_id")
+  roll_no                String   @id @db.VarChar(10)
+  certificate_one        String   @db.VarChar(100)
+  certificate_two        String   @db.VarChar(100)
+  certificate_three      String   @db.VarChar(100)
+  certificate_four       String   @db.VarChar(100)
+  acad_achievement_one   String?  @db.VarChar(50)
+  acad_achievement_two   String?  @db.VarChar(50)
+  acad_achievement_three String?  @db.VarChar(50)
+  acad_achievement_four  String?  @db.VarChar(50)
+  career_obj             String?  @db.VarChar(1000)
+  students               students @relation(fields: [roll_no], references: [roll_no], onDelete: NoAction, onUpdate: NoAction, map: "student_skillset_roll_no_bcf02ede_fk_students_roll_no")
 }
 
 model students {
-  id                        BigInt                      @id @default(autoincrement())
-  roll_no                   String                      @unique(map: "roll_no") @db.VarChar(10)
+  last_login                DateTime?                   @db.DateTime(6)
+  is_superuser              Boolean
+  roll_no                   String                      @id @db.VarChar(10)
   first_name                String?                     @db.VarChar(50)
   middle_name               String?                     @db.VarChar(50)
   last_name                 String?                     @db.VarChar(50)
-  email                     String?                     @unique(map: "students_email_4bd9aec2_uniq") @db.VarChar(50)
+  email                     String?                     @unique(map: "email") @db.VarChar(50)
   phone_number              String?                     @db.VarChar(20)
   gender                    String?                     @db.VarChar(10)
   github                    String?                     @db.VarChar(50)
@@ -287,27 +278,25 @@ model students {
   photo                     String                      @db.VarChar(100)
   department                String?                     @db.VarChar(50)
   batch                     Int?
-  rait_email                String?                     @unique(map: "students_rait_email_37675066_uniq") @db.VarChar(50)
-  is_superuser              Boolean
-  last_login                DateTime?                   @db.DateTime(6)
+  rait_email                String?                     @unique(map: "rait_email") @db.VarChar(50)
   is_staff                  Boolean
-  academic_info             academic_info[]
+  academic_info             academic_info?
   django_admin_log          django_admin_log[]
   eligible_students         eligible_students[]
-  other_info                other_info[]
-  student_experience        student_experience[]
-  student_placement_details student_placement_details[]
-  student_skillset          student_skillset[]
+  other_info                other_info?
+  student_experience        student_experience?
+  student_placement_details student_placement_details?
+  student_skillset          student_skillset?
   students_groups           students_groups[]
   students_user_permissions students_user_permissions[]
 }
 
 model students_groups {
   id         BigInt     @id @default(autoincrement())
-  student_id BigInt
+  student_id String     @db.VarChar(10)
   group_id   Int
   auth_group auth_group @relation(fields: [group_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "students_groups_group_id_04f6e2cc_fk_auth_group_id")
-  students   students   @relation(fields: [student_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "students_groups_student_id_8b9a8731_fk_students_id")
+  students   students   @relation(fields: [student_id], references: [roll_no], onDelete: NoAction, onUpdate: NoAction, map: "students_groups_student_id_8b9a8731_fk_students_roll_no")
 
   @@unique([student_id, group_id], map: "students_groups_student_id_group_id_6e0fd69a_uniq")
   @@index([group_id], map: "students_groups_group_id_04f6e2cc_fk_auth_group_id")
@@ -315,10 +304,10 @@ model students_groups {
 
 model students_user_permissions {
   id              BigInt          @id @default(autoincrement())
-  student_id      BigInt
+  student_id      String          @db.VarChar(10)
   permission_id   Int
   auth_permission auth_permission @relation(fields: [permission_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "students_user_permis_permission_id_7525e7e1_fk_auth_perm")
-  students        students        @relation(fields: [student_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "students_user_permissions_student_id_ecd305e7_fk_students_id")
+  students        students        @relation(fields: [student_id], references: [roll_no], onDelete: NoAction, onUpdate: NoAction, map: "students_user_permis_student_id_ecd305e7_fk_students_")
 
   @@unique([student_id, permission_id], map: "students_user_permissions_student_id_permission_id_e35193b9_uniq")
   @@index([permission_id], map: "students_user_permis_permission_id_7525e7e1_fk_auth_perm")
