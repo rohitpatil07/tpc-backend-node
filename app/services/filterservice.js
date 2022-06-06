@@ -13,11 +13,11 @@ const getAllStudents = async () => {
   }
 };
 
-const getStudentByRoll = async (rollno) => {
+const getStudentByRoll = async (roll_no) => {
   try {
     let data = await prisma.students.findUnique({
       where: {
-        rollno: rollno,
+        roll_no: roll_no,
       },
     });
 
@@ -29,11 +29,11 @@ const getStudentByRoll = async (rollno) => {
   }
 };
 
-const getStudentProfile = async (rollno) => {
+const getStudentProfile = async (roll_no) => {
   try {
     let data = await prisma.students.findUnique({
       where: {
-        rollno: rollno,
+        roll_no: roll_no,
       },
       include: {
         other_info: {
@@ -125,7 +125,7 @@ const getNotifStudents = async (criteria) => {
     let students = [];
     let eligible = await prisma.academic_info.findMany({
       select: {
-        rollno: true,
+        roll_no: true,
       },
       where: {
         deadkt: { lte: criteria.deadkt },
@@ -139,39 +139,39 @@ const getNotifStudents = async (criteria) => {
     });
 
     for (let student in eligible) {
-      students.push(eligible[student]['rollno']);
+      students.push(eligible[student]['roll_no']);
     }
 
     eligible = await prisma.students.findMany({
       select: {
-        rollno: true,
+        roll_no: true,
       },
       where: {
-        rollno: { in: students },
+        roll_no: { in: students },
         no_of_offers: { lte: 1 },
       },
     });
 
     students = [];
     for (let student in eligible) {
-      students.push(eligible[student]['rollno']);
+      students.push(eligible[student]['roll_no']);
     }
 
     const pack_diff = 150000;
 
     eligible = await prisma.student_placement_details.findMany({
       select: {
-        rollno: true,
+        roll_no: true,
       },
       where: {
-        rollno: { in: students },
+        roll_no: { in: students },
         package_one: { lte: criteria.package - pack_diff },
       },
     });
 
     students = [];
     for (let student in eligible) {
-      students.push(eligible[student]['rollno']);
+      students.push(eligible[student]['roll_no']);
     }
 
     return students;

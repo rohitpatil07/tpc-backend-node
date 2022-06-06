@@ -5,7 +5,7 @@ const getEligibleStudents = async () => {
     let package_one_sorting = await prisma.student_placement_details.findMany({
       take: 10,
       select: {
-        rollno: true,
+        roll_no: true,
         placed_org_one: true,
         package_one: true,
         placed_org_two: true,
@@ -18,7 +18,7 @@ const getEligibleStudents = async () => {
     let package_two_sorting = await prisma.student_placement_details.findMany({
       take: 10,
       select: {
-        rollno: true,
+        roll_no: true,
         placed_org_one: true,
         package_one: true,
         placed_org_two: true,
