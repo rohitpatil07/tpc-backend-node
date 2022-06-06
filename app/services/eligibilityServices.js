@@ -40,6 +40,7 @@ const getSelectedStudentsCompanyWise = async () => {
     return error;
   }
 };
+
 const getSelectedStudentsLpaWise = async () => {
   try {
     let lpa = await prisma.student_placement_details.groupBy({
@@ -200,10 +201,40 @@ const getPackagesPerCompany = async (company) => {
   return packages_data;
 };
 
+const getStudentsPlacedByDept = async () => {
+  try {
+    let placed_students = await prisma.student_placement_details.findMany({
+      select: {
+        roll_no: true,
+      },
+      where: {
+        placed_package: { gte: 1 },
+      },
+    });
+
+    let placed_by_dept = {};
+    placed_by_dept['IT'] = 0;
+    placed_by_dept['CE'] = 0;
+    placed_by_dept['ET'] = 0;
+    placed_by_dept['IN'] = 0;
+    placed_by_dept['EE'] = 0;
+
+    for (let student in placed_students) {
+      const roll_no = placed_students[student]['roll_no'];
+      placed_by_dept[roll_no.substring(2, 4)]++;
+    }
+
+    return placed_by_dept;
+  } catch (error) {
+    return error;
+  }
+};
+
 export default {
   getofferCount,
   getTopPlacedStudents,
   getSelectedStudentsCompanyWise,
   getSelectedStudentsLpaWise,
   getCompanyWisePackage,
+  getStudentsPlacedByDept,
 };
