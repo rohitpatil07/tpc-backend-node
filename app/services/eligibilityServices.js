@@ -92,8 +92,7 @@ const getofferCount = async()=>{
     }
     restructure_array.push(object);
   }
-  console.log(restructure_array);
-  return offers;
+  return restructure_array;
 }
 catch(error){
   return error;
