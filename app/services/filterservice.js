@@ -166,10 +166,13 @@ const getNotifStudents = async (criteria) => {
       where: {
         roll_no: { in: students },
         package_one: { lte: criteria.package - pack_diff },
+        package_two: { lte: criteria.package - pack_diff },
+        package_three: { lte: criteria.package - pack_diff },
       },
     });
 
     students = [];
+
     for (let student in eligible) {
       students.push(eligible[student]['roll_no']);
     }

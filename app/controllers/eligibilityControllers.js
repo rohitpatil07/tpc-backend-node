@@ -8,32 +8,32 @@ const getTopPlacedStudents = async (req, res) => {
     return res.json(error);
   }
 };
-const getofferCount = async(req,res)=>{
-  try{
+const getofferCount = async (req, res) => {
+  try {
     const offerCount = await eligibilityServices.getofferCount();
-    return res.json({offerCount});
-  }
-  catch(error){
+    return res.json({ offerCount });
+  } catch (error) {
     return res.json(error);
   }
-}
+};
 const getSelectedStudentsCompanyWise = async (req, res) => {
   try {
-    const studentsPlacedCompanyWise = await eligibilityServices.getSelectedStudentsCompanyWise();
-    return res.json({ studentsPlacedCompanyWise  });
+    const studentsPlacedCompanyWise =
+      await eligibilityServices.getSelectedStudentsCompanyWise();
+    return res.json({ studentsPlacedCompanyWise });
   } catch (error) {
     return res.json(error);
   }
 };
 const getSelectedStudentsLpaWise = async (req, res) => {
   try {
-    const studentsPlacedLpaWise  = await eligibilityServices.getSelectedStudentsLpaWise();
-    return res.json({ studentsPlacedLpaWise  });
+    const studentsPlacedLpaWise =
+      await eligibilityServices.getSelectedStudentsLpaWise();
+    return res.json({ studentsPlacedLpaWise });
   } catch (error) {
     return res.json(error);
   }
-}; 
-
+};
 
 const getCompanyWisePackage = async (req, res) => {
   try {
@@ -45,4 +45,10 @@ const getCompanyWisePackage = async (req, res) => {
   }
 };
 
-export default { getofferCount,getTopPlacedStudents,getSelectedStudentsCompanyWise,getSelectedStudentsLpaWise ,getCompanyWisePackage};
+export default {
+  getofferCount,
+  getTopPlacedStudents,
+  getSelectedStudentsCompanyWise,
+  getSelectedStudentsLpaWise,
+  getCompanyWisePackage,
+};

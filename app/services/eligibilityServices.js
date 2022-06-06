@@ -1,5 +1,4 @@
 import prisma from '../config/prisma.js';
-import sorting from '../util/eligibleSorting.js';
 const getTopPlacedStudents = async () => {
   try {
     let student_list = await prisma.student_placement_details.findMany({
@@ -12,7 +11,7 @@ const getTopPlacedStudents = async () => {
       orderBy: {
         placed_package: 'desc',
       },
-    });    
+    });
     return student_list;
   } catch (error) {
     return error;
@@ -27,13 +26,13 @@ const getSelectedStudentsCompanyWise = async () => {
         placed_company: true,
       },
     });
-    
+
     let restructure_array = [];
-    for(let i=0;i<lpa.length;i++){
+    for (let i = 0; i < lpa.length; i++) {
       let refined_object = {
-        placed_company:lpa[i].placed_company,
-        count:lpa[i]._count.placed_company
-      }
+        placed_company: lpa[i].placed_company,
+        count: lpa[i]._count.placed_company,
+      };
       restructure_array.push(refined_object);
     }
     return restructure_array;
@@ -49,13 +48,13 @@ const getSelectedStudentsLpaWise = async () => {
         placed_package: true,
       },
     });
-    
+
     let restructure_array = [];
-    for(let i=0;i<lpa.length;i++){
+    for (let i = 0; i < lpa.length; i++) {
       let refined_object = {
-        placed_package:lpa[i].placed_package,
-        count:lpa[i]._count.placed_package
-      }
+        placed_package: lpa[i].placed_package,
+        count: lpa[i]._count.placed_package,
+      };
       restructure_array.push(refined_object);
     }
     return restructure_array;
@@ -64,40 +63,39 @@ const getSelectedStudentsLpaWise = async () => {
   }
 };
 
-const getofferCount = async()=>{
-  try{
-  let offers = await prisma.student_placement_details.findMany({
-    select:{
-      roll_no:true,
-      offer_letter_one:true,
-      offer_letter_two:true,
-      offer_letter_three:true,
+const getofferCount = async () => {
+  try {
+    let offers = await prisma.student_placement_details.findMany({
+      select: {
+        roll_no: true,
+        offer_letter_one: true,
+        offer_letter_two: true,
+        offer_letter_three: true,
+      },
+    });
+    let restructure_array = [];
+    for (let i = 0; i < offers.length; i++) {
+      let count = 0;
+      if (offers[i].offer_letter_one) {
+        count++;
+      }
+      if (offers[i].offer_letter_two) {
+        count++;
+      }
+      if (offers[i].offer_letter_three) {
+        count++;
+      }
+      let object = {
+        roll_no: offers[i].roll_no,
+        offer_count: count,
+      };
+      restructure_array.push(object);
     }
-  });
-  let restructure_array = [];
-  for(let i=0;i<offers.length;i++){
-    let count = 0;
-    if(offers[i].offer_letter_one){
-      count++;
-    }
-    if(offers[i].offer_letter_two){
-      count++;
-    }
-    if(offers[i].offer_letter_three){
-      count++;
-    }
-    let object={
-      roll_no:offers[i].roll_no,
-      offer_count:count,
-    }
-    restructure_array.push(object);
+    return restructure_array;
+  } catch (error) {
+    return error;
   }
-  return restructure_array;
-}
-catch(error){
-  return error;
-}
-}
+};
 const getCompanyWisePackage = async () => {
   let packages = [];
 
