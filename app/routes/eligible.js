@@ -13,5 +13,6 @@ router.get(
   eligibilityControllers.getSelectedStudentsLpaWise,
 );
 router.get('/companyWisePackage', eligibilityControllers.getCompanyWisePackage);
+router.get('/placedByDept', eligibilityControllers.getStudentsPlacedByDept);
 
 export default router;

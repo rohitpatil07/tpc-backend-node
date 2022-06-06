@@ -45,10 +45,20 @@ const getCompanyWisePackage = async (req, res) => {
   }
 };
 
+const getStudentsPlacedByDept = async (req, res) => {
+  try {
+    let students = await eligibilityServices.getStudentsPlacedByDept();
+    res.json(students);
+  } catch (error) {
+    res.json(error);
+  }
+};
+
 export default {
   getofferCount,
   getTopPlacedStudents,
   getSelectedStudentsCompanyWise,
   getSelectedStudentsLpaWise,
   getCompanyWisePackage,
+  getStudentsPlacedByDept,
 };
