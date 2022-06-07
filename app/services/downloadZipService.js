@@ -7,10 +7,14 @@ import AdmZip from 'adm-zip';
 var html = fs.readFileSync(process.cwd() + '/app/util/table.html', "utf8");
 
 import filterService from '../services/filterservice.js';
+import { dirname } from "path";
 
 const download = async (students) => {
     try {
         console.log("Hi",students)
+        const bitmap = fs.readFileSync(process.cwd()+'/app/util/rait2.jpg');
+        console.log("path ",process.cwd())
+        const logo = bitmap.toString('base64');
         for(let i = 0; i<students.length;i++){
             let student = await filterService.getStudentProfile(students[i]);
             let x=[student]
@@ -26,6 +30,7 @@ const download = async (students) => {
                 html: html,
                 data: {
                   users:x,
+                  logo: logo,
                 },
                 path: `./Zip/output${i}.pdf`,
                 type: "",
@@ -50,19 +55,19 @@ const download = async (students) => {
                 const data = zip.toBuffer();
 			    zip.writeZip("./export.zip");
         },5000);
-        // setTimeout(()=>{
-        //     if (fs.existsSync(`./export.zip`)){	     
-        //         fs.unlinkSync(`./export.zip`, function (err) {
-        //             if (err)
-        //                 throw err;
-        //             console.log("deleted zip file")
-        //         });
-        //     }
-        //     var CleanDir = fs.readdirSync('./Zip');
-        //     for(var v = 0; v < CleanDir.length;v++){
-        //         fs.unlinkSync(`./Zip/output${v}.pdf`);
-        //     }
-        // },10000);
+        setTimeout(()=>{
+            if (fs.existsSync(`./export.zip`)){	     
+                fs.unlinkSync(`./export.zip`, function (err) {
+                    if (err)
+                        throw err;
+                    console.log("deleted zip file")
+                });
+            }
+            var CleanDir = fs.readdirSync('./Zip');
+            for(var v = 0; v < CleanDir.length;v++){
+                fs.unlinkSync(`./Zip/output${v}.pdf`);
+            }
+        },10000);
 
     } catch (error) {
         return error;

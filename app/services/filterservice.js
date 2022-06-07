@@ -37,11 +37,7 @@ const getStudentProfile = async (rollno) => {
         rollno: rollno,
       },
       include: {
-        other_info: {
-          select: {
-            hobbies: true,
-          },
-        },
+        other_info: true,
         academic_info: true,
         student_placement_details: true,
         student_experience: true,
