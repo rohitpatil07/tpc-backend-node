@@ -1,14 +1,27 @@
 import downloadZipService from '../services/downloadZipService.js';
 
-const download = async (req, res) => {
+const zipDownload = async (req, res) => {
   try {
     const students = req.body.data;
-    await downloadZipService.download(students);
-    //res.download('export.zip');
-    return res.status(200).json({ message: 'Sucess' });
+    await downloadZipService.zipDownload(students);
+    setTimeout(()=>{
+    res.download('export.zip');
+    },1500);
   } catch (error) {
     res.json(error);
   }
 };
 
-export default { download };
+const resumeDownload = async (req, res) => {
+  try {
+    const rollno = req.body.data;
+    await downloadZipService.resumeDownload(rollno);
+    setTimeout(()=>{
+      res.download('resume.pdf');
+    },500);
+  } catch (error) {
+    res.json(error);
+  }
+};
+
+export default { resumeDownload, zipDownload };
