@@ -10,6 +10,6 @@ router.use('/filter', filterRoutes);
 router.use('/download', downloadRoutes);
 router.use('/eligible', eligibleRoutes);
 router.use('/downloadcsv', downloadCsvRoutes);
-router.use('/downloadzip', downloadZipRoutes);
+router.use('/downloadresume',downloadZipRoutes);
 
 export default router;
