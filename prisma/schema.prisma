@@ -10,113 +10,305 @@ datasource db {
 }
 
 model academic_info {
-  rollno           String   @id @db.VarChar(10)
-  tenth_percent    Float?   @db.Float
-  twelveth_percent Float?   @db.Float
-  sem1_pointer     Float?   @db.Float
-  sem2_pointer     Float?   @db.Float
-  sem3_pointer     Float?   @db.Float
-  sem4_pointer     Float?   @db.Float
-  sem5_pointer     Float?   @db.Float
-  sem6_pointer     Float?   @db.Float
-  sem7_pointer     Float?   @db.Float
-  sem8_pointer     Float?   @db.Float
-  cgpa             Float?   @db.Float
-  be_percent       Float?   @db.Float
-  livekt           Int?
-  students         students @relation(fields: [rollno], references: [rollno])
-  deadkt           Int?
-  gap              Int?
-
-  @@index([rollno], map: "students_id_idx")
+  roll_no                      String   @id @db.VarChar(10)
+  tenth_percent                Decimal? @db.Decimal(6, 2)
+  tenth_completion_date        String?  @db.VarChar(20)
+  tenth_obtained_marks         Int?     @db.UnsignedInt
+  tenth_total_marks            Int?     @db.UnsignedInt
+  twelveth_percent             Decimal? @db.Decimal(6, 2)
+  twelveth_completion_date     String?  @db.VarChar(20)
+  twelveth_obtained_marks      Int?     @db.UnsignedInt
+  twelveth_total_marks         Int?     @db.UnsignedInt
+  diploma_percent              Decimal? @db.Decimal(6, 2)
+  diploma_completion_date      String?  @db.VarChar(20)
+  diploma_obtained_marks       Int?     @db.UnsignedInt
+  diploma_total_marks          Int?     @db.UnsignedInt
+  sem1_pointer                 Decimal? @db.Decimal(6, 2)
+  sem1_completion_date         String?  @db.VarChar(20)
+  sem1_obtained_marks          Int?     @db.UnsignedInt
+  sem1_total_marks             Int?     @db.UnsignedInt
+  sem2_pointer                 Decimal? @db.Decimal(6, 2)
+  sem2_completion_date         String?  @db.VarChar(20)
+  sem2_obtained_marks          Int?     @db.UnsignedInt
+  sem2_total_marks             Int?     @db.UnsignedInt
+  sem3_pointer                 Decimal? @db.Decimal(6, 2)
+  sem3_completion_date         String?  @db.VarChar(20)
+  sem3_obtained_marks          Int?     @db.UnsignedInt
+  sem3_total_marks             Int?     @db.UnsignedInt
+  sem4_pointer                 Decimal? @db.Decimal(6, 2)
+  sem4_completion_date         String?  @db.VarChar(20)
+  sem4_obtained_marks          Int?     @db.UnsignedInt
+  sem4_total_marks             Int?     @db.UnsignedInt
+  sem5_pointer                 Decimal? @db.Decimal(6, 2)
+  sem5_completion_date         String?  @db.VarChar(20)
+  sem5_obtained_marks          Int?     @db.UnsignedInt
+  sem5_total_marks             Int?     @db.UnsignedInt
+  sem6_pointer                 Decimal? @db.Decimal(6, 2)
+  sem6_completion_date         String?  @db.VarChar(20)
+  sem6_obtained_marks          Int?     @db.UnsignedInt
+  sem6_total_marks             Int?     @db.UnsignedInt
+  sem7_pointer                 Decimal? @db.Decimal(6, 2)
+  sem7_completion_date         String?  @db.VarChar(20)
+  sem7_obtained_marks          Int?     @db.UnsignedInt
+  sem7_total_marks             Int?     @db.UnsignedInt
+  sem8_pointer                 Decimal? @db.Decimal(6, 2)
+  sem8_completion_date         String?  @db.VarChar(20)
+  sem8_obtained_marks          Int?     @db.UnsignedInt
+  sem8_total_marks             Int?     @db.UnsignedInt
+  cgpa                         Decimal? @db.Decimal(6, 2)
+  be_percent                   Decimal? @db.Decimal(6, 2)
+  masters_sem1_pointer         Decimal? @db.Decimal(6, 2)
+  masters_sem1_completion_date String?  @db.VarChar(20)
+  masters_sem1_obtained_marks  Int?     @db.UnsignedInt
+  masters_sem1_total_marks     Int?     @db.UnsignedInt
+  masters_sem2_pointer         Decimal? @db.Decimal(6, 2)
+  masters_sem2_completion_date String?  @db.VarChar(20)
+  masters_sem2_obtained_marks  Int?     @db.UnsignedInt
+  masters_sem2_total_marks     Int?     @db.UnsignedInt
+  masters_sem3_pointer         Decimal? @db.Decimal(6, 2)
+  masters_sem3_completion_date String?  @db.VarChar(20)
+  masters_sem3_obtained_marks  Int?     @db.UnsignedInt
+  masters_sem3_total_marks     Int?     @db.UnsignedInt
+  masters_sem4_pointer         Decimal? @db.Decimal(6, 2)
+  masters_sem4_completion_date String?  @db.VarChar(20)
+  masters_sem4_obtained_marks  Int?     @db.UnsignedInt
+  masters_sem4_total_marks     Int?     @db.UnsignedInt
+  masters_cgpa                 Decimal? @db.Decimal(6, 2)
+  masters_percent              Decimal? @db.Decimal(6, 2)
+  livekt                       Int?
+  deadkt                       Int?
+  gap                          Int?
+  students                     students @relation(fields: [roll_no], references: [roll_no], onDelete: NoAction, onUpdate: NoAction, map: "academic_info_roll_no_fbf1c923_fk_students_roll_no")
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model admins {
-  user_name String  @db.VarChar(30)
+  id        BigInt  @id @default(autoincrement())
+  user_name String? @db.VarChar(100)
   password  String? @db.VarChar(100)
+}
 
-  @@ignore
+model auth_group {
+  id                     Int                      @id @default(autoincrement())
+  name                   String                   @unique(map: "name") @db.VarChar(150)
+  auth_group_permissions auth_group_permissions[]
+  students_groups        students_groups[]
+}
+
+model auth_group_permissions {
+  id              BigInt          @id @default(autoincrement())
+  group_id        Int
+  permission_id   Int
+  auth_group      auth_group      @relation(fields: [group_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "auth_group_permissions_group_id_b120cbf9_fk_auth_group_id")
+  auth_permission auth_permission @relation(fields: [permission_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "auth_group_permissio_permission_id_84c5c92e_fk_auth_perm")
+
+  @@unique([group_id, permission_id], map: "auth_group_permissions_group_id_permission_id_0cd325b0_uniq")
+  @@index([permission_id], map: "auth_group_permissio_permission_id_84c5c92e_fk_auth_perm")
+}
+
+model auth_permission {
+  id                        Int                         @id @default(autoincrement())
+  name                      String                      @db.VarChar(255)
+  content_type_id           Int
+  codename                  String                      @db.VarChar(100)
+  django_content_type       django_content_type         @relation(fields: [content_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "auth_permission_content_type_id_2f476e4b_fk_django_co")
+  auth_group_permissions    auth_group_permissions[]
+  students_user_permissions students_user_permissions[]
+
+  @@unique([content_type_id, codename], map: "auth_permission_content_type_id_codename_01ab375a_uniq")
+}
+
+model django_admin_log {
+  id                  Int                  @id @default(autoincrement())
+  action_time         DateTime             @db.DateTime(6)
+  object_id           String?              @db.LongText
+  object_repr         String               @db.VarChar(200)
+  action_flag         Int                  @db.UnsignedSmallInt
+  change_message      String               @db.LongText
+  content_type_id     Int?
+  user_id             String               @db.VarChar(10)
+  django_content_type django_content_type? @relation(fields: [content_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "django_admin_log_content_type_id_c4bce8eb_fk_django_co")
+  students            students             @relation(fields: [user_id], references: [roll_no], onDelete: NoAction, onUpdate: NoAction, map: "django_admin_log_user_id_c564eba6_fk_students_roll_no")
+
+  @@index([content_type_id], map: "django_admin_log_content_type_id_c4bce8eb_fk_django_co")
+  @@index([user_id], map: "django_admin_log_user_id_c564eba6_fk_students_roll_no")
+}
+
+model django_content_type {
+  id               Int                @id @default(autoincrement())
+  app_label        String             @db.VarChar(100)
+  model            String             @db.VarChar(100)
+  auth_permission  auth_permission[]
+  django_admin_log django_admin_log[]
+
+  @@unique([app_label, model], map: "django_content_type_app_label_model_76bd3d3b_uniq")
+}
+
+model django_migrations {
+  id      BigInt   @id @default(autoincrement())
+  app     String   @db.VarChar(255)
+  name    String   @db.VarChar(255)
+  applied DateTime @db.DateTime(6)
+}
+
+model django_session {
+  session_key  String   @id @db.VarChar(40)
+  session_data String   @db.LongText
+  expire_date  DateTime @db.DateTime(6)
+
+  @@index([expire_date], map: "django_session_expire_date_a5c62663")
+}
+
+model drf_api_logs {
+  id                BigInt   @id @default(autoincrement())
+  added_on          DateTime @db.DateTime(6)
+  api               String   @db.VarChar(1024)
+  headers           String   @db.LongText
+  body              String   @db.LongText
+  method            String   @db.VarChar(10)
+  client_ip_address String   @db.VarChar(50)
+  response          String   @db.LongText
+  status_code       Int      @db.UnsignedSmallInt
+  execution_time    Decimal  @db.Decimal(8, 5)
+
+  @@index([method], map: "drf_api_logs_method_f610a90b")
+  @@index([status_code], map: "drf_api_logs_status_code_4ffd4334")
+}
+
+model eligible_students {
+  id           BigInt       @id @default(autoincrement())
+  job_id       Int
+  roll_no      String       @db.VarChar(10)
+  job_openings job_openings @relation(fields: [job_id], references: [job_id], onDelete: NoAction, onUpdate: NoAction, map: "eligible_students_job_id_490935ec_fk_job_openings_job_id")
+  students     students     @relation(fields: [roll_no], references: [roll_no], onDelete: NoAction, onUpdate: NoAction, map: "eligible_students_roll_no_59002551_fk_students_roll_no")
+
+  @@index([job_id], map: "eligible_students_job_id_490935ec_fk_job_openings_job_id")
+  @@index([roll_no], map: "eligible_students_roll_no_59002551_fk_students_roll_no")
+}
+
+model job_openings {
+  job_id            Int                 @id @default(autoincrement())
+  email             String?             @db.VarChar(50)
+  batch             Int?
+  valid_till        String?             @db.VarChar(50)
+  branch            String?             @db.VarChar(50)
+  offers            String?             @db.VarChar(50)
+  tenth_percent     Decimal?            @db.Decimal(6, 2)
+  twelveth_percent  Decimal?            @db.Decimal(6, 2)
+  diploma_percent   Decimal?            @db.Decimal(6, 2)
+  be_percent        Decimal?            @db.Decimal(6, 2)
+  cgpa              Decimal?            @db.Decimal(6, 2)
+  notice            String?             @db.LongText
+  live_kt           Int?
+  dead_kt           Int?
+  gap               Int?
+  package           String?             @db.VarChar(50)
+  eligible_students eligible_students[]
 }
 
 model other_info {
-  rollno               String   @id @db.VarChar(10)
-  hobbies              String?  @db.VarChar(200)
-  pos_of_res_one       String?  @db.VarChar(20)
-  pos_of_res_two       String?  @db.VarChar(20)
-  pos_of_res_three     String?  @db.VarChar(20)
-  pos_of_res_four      String?  @db.VarChar(20)
-  extracuricular_one   String?  @db.VarChar(100)
-  extracuricular_two   String?  @db.VarChar(100)
-  extracuricular_three String?  @db.VarChar(100)
-  students             students @relation(fields: [rollno], references: [rollno])
-
-  @@index([rollno], map: "students_id_idx")
+  roll_no              String   @id @db.VarChar(10)
+  hobbies              String?  @db.VarChar(1000)
+  pos_of_res_one       String?  @db.VarChar(50)
+  pos_of_res_two       String?  @db.VarChar(50)
+  pos_of_res_three     String?  @db.VarChar(50)
+  pos_of_res_four      String?  @db.VarChar(50)
+  extracuricular_one   String?  @db.VarChar(500)
+  extracuricular_two   String?  @db.VarChar(500)
+  extracuricular_three String?  @db.VarChar(500)
+  students             students @relation(fields: [roll_no], references: [roll_no], onDelete: NoAction, onUpdate: NoAction, map: "other_info_roll_no_3ca2010f_fk_students_roll_no")
 }
 
 model student_experience {
-  rollno          String   @id @db.VarChar(10)
-  intership_one   String?  @db.VarChar(400)
-  intership_two   String?  @db.VarChar(400)
-  intership_three String?  @db.VarChar(400)
-  project_one     String?  @db.VarChar(400)
-  project_two     String?  @db.VarChar(400)
-  project_three   String?  @db.VarChar(400)
-  pref_lang       String?  @db.VarChar(10)
-  technologies    String?  @db.VarChar(400)
-  students        students @relation(fields: [rollno], references: [rollno])
-
-  @@index([rollno], map: "student_id_idx")
+  roll_no          String   @id @db.VarChar(10)
+  internship_one   String?  @db.VarChar(1000)
+  internship_two   String?  @db.VarChar(1000)
+  internship_three String?  @db.VarChar(1000)
+  project_one      String?  @db.VarChar(1000)
+  project_two      String?  @db.VarChar(1000)
+  project_three    String?  @db.VarChar(1000)
+  pref_lang        String?  @db.VarChar(50)
+  technologies     String?  @db.VarChar(1000)
+  students         students @relation(fields: [roll_no], references: [roll_no], onDelete: NoAction, onUpdate: NoAction, map: "student_experience_roll_no_7b07ffdf_fk_students_roll_no")
 }
 
 model student_placement_details {
-  rollno           String   @id @db.VarChar(10)
-  offer_letter_one Bytes?   @db.Blob
-  offer_letter_two Bytes?   @db.Blob
-  placed_org_one   String?  @db.VarChar(50)
-  placed_org_two   String?  @db.VarChar(50)
-  package_one      Float?   @db.Float
-  package_two      Float?   @db.Float
-  students         students @relation(fields: [rollno], references: [rollno])
-
-  @@index([rollno], map: "students_id_idx")
+  roll_no            String   @id @db.VarChar(10)
+  offer_letter_one   String   @db.VarChar(100)
+  offer_letter_two   String   @db.VarChar(100)
+  placed_org_one     String?  @db.VarChar(50)
+  placed_org_two     String?  @db.VarChar(50)
+  package_one        Decimal? @db.Decimal(12, 4)
+  package_two        Decimal? @db.Decimal(12, 4)
+  offer_letter_three String   @db.VarChar(100)
+  package_three      Decimal? @db.Decimal(12, 4)
+  placed_company     String?  @db.VarChar(50)
+  placed_org_three   String?  @db.VarChar(50)
+  placed_package     Decimal? @db.Decimal(12, 4)
+  students           students @relation(fields: [roll_no], references: [roll_no], onDelete: NoAction, onUpdate: NoAction, map: "student_placement_details_roll_no_1fe379f9_fk_students_roll_no")
 }
 
 model student_skillset {
-  rollno                 String   @id @db.VarChar(10)
-  certificate_one        Bytes?   @db.Blob
-  certificate_two        Bytes?   @db.Blob
-  certificate_three      Bytes?   @db.Blob
-  certificate_four       Bytes?   @db.Blob
-  acad_achievement_one   String?  @db.VarChar(20)
-  acad_achievement_two   String?  @db.VarChar(20)
-  acad_achievement_three String?  @db.VarChar(20)
-  acad_achievement_four  String?  @db.VarChar(20)
-  career_obj             String?  @db.VarChar(300)
-  students               students @relation(fields: [rollno], references: [rollno])
-
-  @@index([rollno], map: "students_id_idx")
+  roll_no                String   @id @db.VarChar(10)
+  certificate_one        String   @db.VarChar(100)
+  certificate_two        String   @db.VarChar(100)
+  certificate_three      String   @db.VarChar(100)
+  certificate_four       String   @db.VarChar(100)
+  acad_achievement_one   String?  @db.VarChar(50)
+  acad_achievement_two   String?  @db.VarChar(50)
+  acad_achievement_three String?  @db.VarChar(50)
+  acad_achievement_four  String?  @db.VarChar(50)
+  career_obj             String?  @db.VarChar(1000)
+  students               students @relation(fields: [roll_no], references: [roll_no], onDelete: NoAction, onUpdate: NoAction, map: "student_skillset_roll_no_bcf02ede_fk_students_roll_no")
 }
 
 model students {
-  rollno                    String                     @id @db.VarChar(10)
-  first_name                String?                    @db.VarChar(30)
-  last_name                 String?                    @db.VarChar(30)
-  middle_name               String?                    @db.VarChar(30)
-  email                     String?                    @db.VarChar(50)
-  phone_number              BigInt?
-  gender                    String?                    @db.Char(1)
-  github                    String?                    @db.VarChar(50)
-  linkedin                  String?                    @db.VarChar(50)
+  last_login                DateTime?                   @db.DateTime(6)
+  is_superuser              Boolean
+  roll_no                   String                      @id @db.VarChar(10)
+  first_name                String?                     @db.VarChar(50)
+  middle_name               String?                     @db.VarChar(50)
+  last_name                 String?                     @db.VarChar(50)
+  email                     String?                     @unique(map: "email") @db.VarChar(50)
+  phone_number              String?                     @db.VarChar(20)
+  gender                    String?                     @db.VarChar(10)
+  github                    String?                     @db.VarChar(50)
+  linkedin                  String?                     @db.VarChar(50)
   no_of_offers              Int?
-  password                  String?                    @default("dypatil@123") @db.VarChar(100)
-  photo                     Bytes?                     @db.Blob
-  department                String?                    @db.VarChar(10)
+  password                  String                      @db.VarChar(100)
+  photo                     String                      @db.VarChar(100)
+  department                String?                     @db.VarChar(50)
   batch                     Int?
-  rait_email                String?                    @db.VarChar(50)
-  other_info                other_info?
-  student_skillset          student_skillset?
+  rait_email                String?                     @unique(map: "rait_email") @db.VarChar(50)
+  is_staff                  Boolean
   academic_info             academic_info?
-  student_placement_details student_placement_details?
+  django_admin_log          django_admin_log[]
+  eligible_students         eligible_students[]
+  other_info                other_info?
   student_experience        student_experience?
+  student_placement_details student_placement_details?
+  student_skillset          student_skillset?
+  students_groups           students_groups[]
+  students_user_permissions students_user_permissions[]
+}
+
+model students_groups {
+  id         BigInt     @id @default(autoincrement())
+  student_id String     @db.VarChar(10)
+  group_id   Int
+  auth_group auth_group @relation(fields: [group_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "students_groups_group_id_04f6e2cc_fk_auth_group_id")
+  students   students   @relation(fields: [student_id], references: [roll_no], onDelete: NoAction, onUpdate: NoAction, map: "students_groups_student_id_8b9a8731_fk_students_roll_no")
+
+  @@unique([student_id, group_id], map: "students_groups_student_id_group_id_6e0fd69a_uniq")
+  @@index([group_id], map: "students_groups_group_id_04f6e2cc_fk_auth_group_id")
+}
+
+model students_user_permissions {
+  id              BigInt          @id @default(autoincrement())
+  student_id      String          @db.VarChar(10)
+  permission_id   Int
+  auth_permission auth_permission @relation(fields: [permission_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "students_user_permis_permission_id_7525e7e1_fk_auth_perm")
+  students        students        @relation(fields: [student_id], references: [roll_no], onDelete: NoAction, onUpdate: NoAction, map: "students_user_permis_student_id_ecd305e7_fk_students_")
+
+  @@unique([student_id, permission_id], map: "students_user_permissions_student_id_permission_id_e35193b9_uniq")
+  @@index([permission_id], map: "students_user_permis_permission_id_7525e7e1_fk_auth_perm")
 }

@@ -1,6 +1,6 @@
 const objectify = async (data) => {
   let selection_object = {
-    rollno: false,
+    roll_no: false,
     first_name: false,
     last_name: false,
     middle_name: false,

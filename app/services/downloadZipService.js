@@ -96,11 +96,9 @@ const resumeDownload = async (rollno) => {
                 });
             }
         },2000);
-
     } catch (error) {
         return error;
     }
 };
 
 export default { zipDownload, resumeDownload };
-    

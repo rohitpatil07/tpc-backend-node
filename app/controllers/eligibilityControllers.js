@@ -1,30 +1,64 @@
 import eligibilityServices from '../services/eligibilityServices.js';
 
-const getEligibleStudents = async (req, res) => {
+const getTopPlacedStudents = async (req, res) => {
   try {
-    const students = await eligibilityServices.getEligibleStudents();
-    console.log(students);
-    return res.json({ students });
+    const top10studentplaced = await eligibilityServices.getTopPlacedStudents();
+    return res.json({ top10studentplaced });
+  } catch (error) {
+    return res.json(error);
+  }
+};
+const getofferCount = async (req, res) => {
+  try {
+    const offerCount = await eligibilityServices.getofferCount();
+    return res.json({ offerCount });
   } catch (error) {
     return res.json(error);
   }
 };
 const getSelectedStudentsCompanyWise = async (req, res) => {
   try {
-    const students = await eligibilityServices.getSelectedStudentsCompanyWise();
-    console.log(students);
-    return res.json({ students });
+    const studentsPlacedCompanyWise =
+      await eligibilityServices.getSelectedStudentsCompanyWise();
+    return res.json({ studentsPlacedCompanyWise });
   } catch (error) {
     return res.json(error);
   }
 };
 const getSelectedStudentsLpaWise = async (req, res) => {
   try {
-    const students = await eligibilityServices.getSelectedStudentsLpaWise();
-    console.log(students);
-    return res.json({ students });
+    const studentsPlacedLpaWise =
+      await eligibilityServices.getSelectedStudentsLpaWise();
+    return res.json({ studentsPlacedLpaWise });
   } catch (error) {
     return res.json(error);
   }
-}; 
-export default { getEligibleStudents,getSelectedStudentsCompanyWise,getSelectedStudentsLpaWise };
+};
+
+const getCompanyWisePackage = async (req, res) => {
+  try {
+    const companyWisePackage =
+      await eligibilityServices.getCompanyWisePackage();
+    return res.json({ companyWisePackage });
+  } catch (error) {
+    res.json(error);
+  }
+};
+
+const getStudentsPlacedByDept = async (req, res) => {
+  try {
+    let students = await eligibilityServices.getStudentsPlacedByDept();
+    res.json(students);
+  } catch (error) {
+    res.json(error);
+  }
+};
+
+export default {
+  getofferCount,
+  getTopPlacedStudents,
+  getSelectedStudentsCompanyWise,
+  getSelectedStudentsLpaWise,
+  getCompanyWisePackage,
+  getStudentsPlacedByDept,
+};

@@ -6,7 +6,6 @@ const getAllStudents = async (req, res) => {
     let students = await filterService.getAllStudents();
     res.json({ students: students });
   } catch (error) {
-    console.log(error);
     res.json(error);
   }
 };
@@ -17,7 +16,6 @@ const getStudentByRoll = async (req, res) => {
     let student = await filterService.getStudentByRoll(rollnumber);
     res.json({ student: student });
   } catch (error) {
-    console.log(error);
     res.json(error);
   }
 };
@@ -28,7 +26,6 @@ const getStudentProfile = async (req, res) => {
     let student = await filterService.getStudentProfile(rollnumber);
     res.json({ student: student });
   } catch (error) {
-    console.log(error);
     res.json(error);
   }
 };
@@ -52,10 +49,8 @@ const dashboardFilter = async (req, res) => {
       where_queries,
       select_fields,
     );
-    console.log(student);
     res.json({ student: student });
   } catch (error) {
-    console.log(error);
     res.json(error);
   }
 };
@@ -66,15 +61,14 @@ const cgpaGreater = async (req, res) => {
     let student = await filterService.cgpaGreater(data);
     res.json({ student: student });
   } catch (error) {
-    console.log(error);
     res.json(error);
   }
 };
 
-const getEligibleStudents = async (req, res) => {
+const getNotifStudents = async (req, res) => {
   try {
     const criteria = req.body;
-    let student_list = await filterService.getEligibleStudents(criteria);
+    let student_list = await filterService.getNotifStudents(criteria);
     return res.json({ student_list });
   } catch (error) {
     res.json(error);
@@ -88,5 +82,5 @@ export default {
   getStudentProfile,
   dashboardFilter,
   cgpaGreater,
-  getEligibleStudents,
+  getNotifStudents,
 };
