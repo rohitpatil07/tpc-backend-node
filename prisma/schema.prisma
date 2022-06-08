@@ -249,10 +249,10 @@ model student_placement_details {
 
 model student_skillset {
   roll_no                String   @id @db.VarChar(10)
-  certificate_one        String   @db.VarChar(100)
-  certificate_two        String   @db.VarChar(100)
-  certificate_three      String   @db.VarChar(100)
-  certificate_four       String   @db.VarChar(100)
+  certificate_one        String?   @db.VarChar(100)
+  certificate_two        String?   @db.VarChar(100)
+  certificate_three      String?   @db.VarChar(100)
+  certificate_four       String?   @db.VarChar(100)
   acad_achievement_one   String?  @db.VarChar(50)
   acad_achievement_two   String?  @db.VarChar(50)
   acad_achievement_three String?  @db.VarChar(50)
