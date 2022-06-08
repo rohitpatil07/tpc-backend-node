@@ -249,14 +249,14 @@ model student_placement_details {
 
 model student_skillset {
   roll_no                String   @id @db.VarChar(10)
-  certificate_one        String?  @db.VarChar(200)
-  certificate_two        String?  @db.VarChar(200)
-  certificate_three      String?  @db.VarChar(200)
-  certificate_four       String?  @db.VarChar(200)
-  acad_achievement_one   String?  @db.VarChar(200)
-  acad_achievement_two   String?  @db.VarChar(200)
-  acad_achievement_three String?  @db.VarChar(200)
-  acad_achievement_four  String?  @db.VarChar(200)
+  certificate_one        String?   @db.VarChar(100)
+  certificate_two        String?   @db.VarChar(100)
+  certificate_three      String?   @db.VarChar(100)
+  certificate_four       String?   @db.VarChar(100)
+  acad_achievement_one   String?  @db.VarChar(50)
+  acad_achievement_two   String?  @db.VarChar(50)
+  acad_achievement_three String?  @db.VarChar(50)
+  acad_achievement_four  String?  @db.VarChar(50)
   career_obj             String?  @db.VarChar(1000)
   students               students @relation(fields: [roll_no], references: [roll_no], onDelete: NoAction, onUpdate: NoAction, map: "student_skillset_roll_no_bcf02ede_fk_students_roll_no")
 }
