@@ -1,275 +1,9 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="table.css">
-    <title>Resume</title>
-</head>
-<style>
-    table, th, td {
-    border: 2px solid black;
-    margin-left:3px;
-  }
-
-  th, td {
-    padding: 20px;
-    text-align: center;
-  }
-  .udetail{
-    background-color: #9F1D37;
-    color:white;
-    display:flex;
-    justify-content: space-between;
-    height:180px;
-    border-bottom: 23px solid black;
-    margin-top:0;
-    font-size: 16px;
-    font-family:poppins;
-    
-  }
-  .base 
-  {
-    color:white;
-    background-color:#9F1D37;
-    width:400px;
-    height:50px;
-    text-align:left;
-    font-size:25px;
-    margin-left:0;
-  }
-  .base1
-  {
-    color:#9F1D37;
-    font-weight:bold;
-    font-size:25px;
-  }
-  .logo
-  {
-    margin-left:20px;
-  }
-
-  .img{
-    height:180px;
-  }
-
-  .uinfo {
-    margin-top:0;
-    font-family:Poppins;
-  }
-
-  .pdf
-  {
-    /* background-image: url('advait_nurani_19IT2024.jpeg');
-    width:75%; */
-    display:flex;
-    flex-direction: column
-  }
-
-  #pimage
-  {
-    border-radius:100%;
-    height:170px;
-    margin-top:50px;
-    justify-content:center;
-    margin-left:50%;
-
-  }
-
-  .right-side
-  {
-    position:relative;
-    width:50%;
-    margin-left:30px;
-  }
-  .left-side
-  {
-    position:relative;
-    width:40%;
-    margin-right:20px;
-  }
-
-  .section
-  {
-    display:flex;
-  }
-  
-  .info
-  {
-    margin-left:2px;
-  }
-  
-  .obj
-  {
-    display:flex;
-  }
-
-  .atable
-  {
-    margin-left:2%
-  }
-
- 
-
-  .line {
-    border-left: 5px #9F1D37;
-    height: 800px;
-    position: absolute;
-    left: 2%;
-    top: 0;
-  }
-
-  .container {
-    display:flex;
-    flex-direction: column;
-  }
-</style>
-<body>
-    {{#each users}}
-    <div class="pdf">
-        <div class="udetail">
-            <div class="info">
-                <h3 class="uinfo">Name: {{this.first_name}}</h3>
-                <h3 class="uinfo">Gender: {{this.gender}}</h3>
-                <h3 class="uinfo">Email: {{this.email}}</h3>
-                <h3 class="uinfo">Mob: {{this.phone_number}}</h3>
-                <h3 class="uinfo">LinkedIn: {{this.linkedin}}</h3>
-            </div>
-            <div>
-                <img id="pimage" src="download.png">
-            </div>
-            <div class="logo">
-                <img class="img" src="logo1.jpeg">
-            </div>
-            
-            
-            <img>
-        </div>
-        <div class="obj">
-            <h1 class="base1">Career Objective</h1>
-            <p class="objd">Lorem ipsum dolor sit amet, consectet</p>
-        </div>
-        <div class="section">
-            <div class="left side">
-                <div>
-                    <h2 class="base">Academic Background</h2>
-                    <table class="table">
-                        <tr>
-                            <td>BE</td>
-                            <td></td>
-                            <td>Sem 7</td>
-                            <td>Sem 8</td>
-                            <td rowspan="4">three</td>
-                        </tr>
-                        <tr>
-                            <td>TE</td>
-                            <td></td>
-                            <td>Sem 5</td>
-                            <td>Sem 6</td>
-                        </tr>
-                        <tr>
-                            <td>SE</td>
-                            <td></td>
-                            <td>Sem 3</td>
-                            <td>Sem 4</td>
-                        </tr>
-                        <tr>
-                            <td>FE</td>
-                            <td></td>
-                            <td>Sem 1</td>
-                            <td>Sem 2</td>
-                        </tr>
-                        <tr>
-                            <td>Class X11</td>
-                            <td></td>
-                            <td colspan="2">HSC</td>
-                            <td>three</td>
-                        </tr>
-                        <tr>
-                            <td>Class X</td>
-                            <td></td>
-                            <td colspan="2">SSC</td>
-                            <td>three</td>
-                        </tr>
-                    </table>
-                </div>
-                <div>
-                    <h3 class="base" >Academic Achievements</h3>
-                    <ul>
-                        <li>one</li>
-                        <li>two</li>
-                        <li>three</li>
-                      </ul>
-                </div>
-                <div>
-                    <h3 class="base">Additional information</h3>
-                    <ul>
-                        <li>one</li>
-                        <li>two</li>
-                        <li>three</li>
-                      </ul>
-                </div>
-            </div>
-            <div class="line"></div>
-            <div class="right side">
-                <div>
-                    <h1 class="base1">Certifications</h1>
-                    <ul>
-                        <li>one</li>
-                        <li>two</li>
-                        <li>three</li>
-                      </ul>
-                </div>
-                <div class="pin">
-                    <h1 class="base1">Projects and internships</h1>
-                    <div>
-                        <h3 class="base1">Projects</h3>
-                        <ul>
-                            <li>one</li>
-                            <li>two</li>
-                            <li>three</li>
-                          </ul>
-                    </div>
-                    <div style="display: inline-block" >
-                        <h1 class="base1">Internships</h1>
-                        <ul>
-                            <li>one</li>
-                            <li>two</li>
-                            <li>three</li>
-                          </ul>
-                    </div>
-                    <div>
-                <div style="display: inline-block" >
-                    <h1 class="base1">Extra curricular Achievements</h1>
-                    <ul>
-                        <li>one</li>
-                        <li>two</li>
-                        <li>three</li>
-                      </ul>
-                </div>
-                        <h1 class="base1">Position of Responsibility</h1>
-                        <ul>
-                            <li>one</li>
-                            <li>two</li>
-                            <li>three</li>
-                          </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-   {{/each}}
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<!-- <link rel="stylesheet" href="table.css" /> -->
 		<title>Resume</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -277,20 +11,15 @@
 	</head>
     <style>   
 
-/* @font-face {
-    font-family: "Poppins";
-    src: url(data:font/truetype;charset=utf-8;base64,aHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1Qb3BwaW5zOndnaHRANDAwOzYwMCZkaXNwbGF5PXN3YX==)
-} */
-
-
-
 body {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: "Poppins", sans-serif;
   font-style: normal; 
+  font-size: 13px;
 }
+
 table,
 th,
 td {
@@ -301,8 +30,12 @@ td {
 
 th,
 td {
-	padding: 20px;
+	padding: 10px;
 	text-align: center;
+}
+
+table{
+  width: 307px;
 }
 .udetail {
 	padding: 1rem;
@@ -310,32 +43,47 @@ td {
 	color: white;
 	display: flex;
   display: -webkit-flex;
-	justify-content: space-between;
-  -webkit-justify-content: space-between;
-	height: 160px;
+	height: 120px;
 	border-bottom: 23px solid black;
 	margin-top: 0;
-	font-size: 16px;
+	font-size: 12px;
 	font-family: poppins;
 }
+
 .base {
 	color: white;
 	background-color: #9f1d37;
-	width: 290px;
+	width: 325px;
 	height: 35px;
 	text-align: left;
 	font-size: 25px;
 	margin-left: 0;
 }
+
 .base1 {
 	color: #9f1d37;
-	font-weight: bold;
+	font-weight: bolder;
 	font-size: 25px;
-	margin-right: 1rem;
+	/* margin-right: 1rem; */
 }
+
+.profile{
+  position: relative;
+  top: 10px;
+  left: 40px;
+  width: 150px;
+  height: 150px;
+  /* left: 170px; */
+  border-radius: 100%;
+  background-image: url("data:image/jpg;base64,{{pfp}}");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .logo {
   width: 30%;
-	margin-left: 20px;
+  position: relative;
+  left: 145px;
   background-image: url("data:image/jpg;base64,{{logo}}");
   background-repeat: no-repeat;
 }
@@ -351,8 +99,6 @@ td {
 }
 
 .pdf {
-	/* background-image: url('advait_nurani_19IT2024.jpeg');
-    width:75%; */
 	display: flex;
 	flex-direction: column;
 }
@@ -360,20 +106,25 @@ td {
 #pimage {
 	border-radius: 100%;
 	height: 12rem;
-	/* margin-top: 50px; */
 	margin-left: 50%;
 }
 
 .right-side {
 	position: relative;
-	width: 50%;
-	margin-left: 30px;
+	max-width: 60%;
+  clear: left;
+  float: right;
+  margin-left: 100px;
+  overflow: hidden;
 }
 .left-side {
 	position: relative;
-	width: 50%;
+	min-width: 40%;
+  float: left;
+  clear: right;
 	margin-right: 20px;
   display: flex;
+  display: -webkit-flex;
   direction: column;
   justify-content: space-between;
 }
@@ -381,6 +132,8 @@ td {
 .subbase1 {
 	margin-left: 21px;
 	color: #9f1d37;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .section {
@@ -395,7 +148,8 @@ td {
 .info {
 	display: flex;
 	flex-direction: column;
-	gap: 0.5rem;
+	/* gap: 0.5rem; */
+  width: 40%;
 	/* margin-left: 2px; */
 }
 
@@ -417,13 +171,12 @@ td {
 	flex-direction: column;
 }
 
-/* .base1::before {
-	content: "\25CF";
-} */
-
 .line {
 	display: flex;
+  clear: both;
 	border-left: 3px solid #9f1d37;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .dot {
@@ -444,12 +197,9 @@ td {
 					<h3 class="uinfo">Mob: {{this.phone_number}}</h3>
 					<h3 class="uinfo">LinkedIn: {{this.linkedin}}</h3>
 				</div>
-				<div>
-					<img id="pimage" src="../util/download.png" />
+				<div class="profile">
 				</div>
 				<div class="logo">
-					<!-- <img width="100%" src="data:image/jpg;base64,{{logo}}"/> -->
-          <!-- <embed type="image/jpg" src="data:image/jpg;base64,{{logo}}" width="100%"> -->
 				</div>
 			</div>
 			<div class="obj">
@@ -464,37 +214,37 @@ td {
 							<tr>
 								<td>BE</td>
 								<td></td>
-								<td>Sem 7</td>
-								<td>Sem 8</td>
+								<td>Sem 7<br/>{{this.academic_info.sem7_pointer}}</td>
+								<td>Sem 8<br/>{{this.academic_info.sem8_pointer}}</td>
 								<td rowspan="4">{{this.academic_info.cgpa}}</td>
 							</tr>
 							<tr>
 								<td>TE</td>
 								<td></td>
-								<td>Sem 5</td>
-								<td>Sem 6</td>
+								<td>Sem 5<br/>{{this.academic_info.sem5_pointer}}</td>
+								<td>Sem 6<br/>{{this.academic_info.sem6_pointer}}</td>
 							</tr>
 							<tr>
 								<td>SE</td>
 								<td></td>
-								<td>Sem 3</td>
-								<td>Sem 4</td>
+								<td>Sem 3<br/>{{this.academic_info.sem3_pointer}}</td>
+								<td>Sem 4<br/>{{this.academic_info.sem4_pointer}}</td>
 							</tr>
 							<tr>
 								<td>FE</td>
 								<td></td>
-								<td>Sem 1</td>
-								<td>Sem 2</td>
+								<td>Sem 1<br/>{{this.academic_info.sem1_pointer}}</td>
+								<td>Sem 2<br/>{{this.academic_info.sem2_pointer}}</td>
 							</tr>
 							<tr>
 								<td>Class X11</td>
-								<td></td>
+								<td>{{this.academic_info.twelveth_completion_date}}</td>
 								<td colspan="2">HSC</td>
 								<td>{{this.academic_info.twelveth_percent}}</td>
 							</tr>
 							<tr>
 								<td>Class X</td>
-								<td></td>
+								<td>{{this.academic_info.tenth_completion_date}}</td>
 								<td colspan="2">SSC</td>
 								<td>{{this.academic_info.tenth_percent}}</td>
 							</tr>
@@ -531,16 +281,16 @@ td {
             {{#ifCond this.student_skillset.certificate_one "!=" null}}
 						<h1 class="base1"> Certifications ▶▶▶</h1>
 						{{/ifCond}}
-            <ul>
+            
                             <!-- {{this.student_skillset.certificate_one}} -->
               {{#ifCond this.student_skillset.certificate_one "!=" null}}
-							<li>1. {{this.student_skillset.certificate_one}}</li>
+							<p>1. {{this.student_skillset.certificate_one}}</p>
 							{{/ifCond}} {{#ifCond this.student_skillset.certificate_two "!=" null}}
-              <li>2. {{this.student_skillset.certificate_two}}</li>
+              <p>2. {{this.student_skillset.certificate_two}}</p>
               {{/ifCond}} {{#ifCond this.student_skillset.certificate_three "!=" null}}
-							<li>3. {{this.student_skillset.certificate_three}}</li>
+							<p>3. {{this.student_skillset.certificate_three}}</p>
               {{/ifCond}}
-						</ul>
+						
 					</div>
 					<div class="pin">
             {{#ifCond this.student_experience.project_one "!=" null}}
@@ -552,63 +302,63 @@ td {
               {{#ifCond this.student_experience.project_one "!=" null}}
 							<h3 class="subbase1">Projects</h3>
               {{/ifCond}}
-							<ul>
+						
                 {{#ifCond this.student_experience.project_one "!=" null}}
-                <li>1. {{this.student_experience.project_one}}</li>
+                <p>1. {{this.student_experience.project_one}}</p>
                 {{/ifCond}} {{#ifCond this.student_experience.project_two "!=" null}}
-							  <li>2. {{this.student_experience.project_two}}</li>
+							  <p>2. {{this.student_experience.project_two}}</p>
                 {{/ifCond}} {{#ifCond this.student_experience.project_three "!=" null}}
-								<li>3. {{this.student_experience.project_three}}</li>
+								<p>3. {{this.student_experience.project_three}}</p>
                 {{/ifCond}}
-							</ul>
+						
 						</div>
-						<div style="display: inline-block">
+						<div >
               {{#ifCond this.student_experience.intership_one "!=" null}}
 							<h3 class="subbase1">Internships</h3>
               {{/ifCond}}
-							<ul>
+						
                 {{#ifCond this.student_experience.intership_one "!=" null}}
-								<li>1. {{this.student_experience.intership_one}}</li>
+								<p>1. {{this.student_experience.intership_one}}</p>
                 {{/ifCond}} {{#ifCond this.student_experience.intership_two "!=" null}}
-								<li>2. {{this.student_experience.intership_two}}</li>
+								<p>2. {{this.student_experience.intership_two}}</p>
                 {{/ifCond}} {{#ifCond this.student_experience.intership_three "!=" null}}
-								<li>3. {{this.student_experience.intership_three}}</li>
+								<p>3. {{this.student_experience.intership_three}}</p>
                 {{/ifCond}}
-							</ul>
+						
 						</div>
 						<div>
-							<div style="display: inline-block">
+							<div >
 								{{#ifCond this.other_info.extracuricular_one "!=" null}}
                 <h1 class="base1">
 									 Extra curricular Achievements ▶▶▶
 								</h1>
                 {{/ifCond}}
-								<ul>
+							
                                     <!-- {{this.other_info.extracuricular_one}} -->
                       {{#ifCond this.other_info.extracuricular_one "!=" null}}
-                      <li>1. {{this.other_info.extracuricular_one}}</li>
+                      <p>1. {{this.other_info.extracuricular_one}}</p>
                       {{/ifCond}} {{#ifCond this.other_info.extracuricular_two "!=" null}}
-							        <li>2. {{this.other_info.extracuricular_two}}</li>
+							        <p>2. {{this.other_info.extracuricular_two}}</p>
                       {{/ifCond}} {{#ifCond this.other_info.extracuricular_three "!=" null}}
-							        <li>3. {{this.other_info.extracuricular_three}}</li>
+							        <p>3. {{this.other_info.extracuricular_three}}</p>
                       {{/ifCond}}
-								</ul>
+							
 							</div>
               {{#ifCond this.other_info.pos_of_res_one "!=" null}}
 							<h1 class="base1">
 								 Position of Responsibility ▶▶▶
 							</h1>
               {{/ifCond}}
-							<ul>
+							
                                 <!-- {{this.other_info.pos_of_res_one}} -->
                   {{#ifCond this.other_info.pos_of_res_one "!=" null}}
-								  <li>1. {{this.other_info.pos_of_res_one}}</li>
+								  <p>1. {{this.other_info.pos_of_res_one}}</p>
                   {{/ifCond}} {{#ifCond this.other_info.pos_of_res_two "!=" null}}
-							    <li>2. {{this.other_info.pos_of_res_two}}</li>
+							    <p>2. {{this.other_info.pos_of_res_two}}</p>
                   {{/ifCond}} {{#ifCond this.other_info.pos_of_res_three "!=" null}}
-							    <li>3. {{this.other_info.pos_of_res_three}}</li>
+							    <p>3. {{this.other_info.pos_of_res_three}}</p>
                   {{/ifCond}}
-							</ul>
+							
 						</div>
 					</div>
 				</div>

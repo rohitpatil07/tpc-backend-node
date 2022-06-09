@@ -71,6 +71,9 @@ const resumeDownload = async (rollno) => {
         const bitmap2= fs.readFileSync(process.cwd()+'/app/util/rait_background.jpg');
         const background = bitmap2.toString('base64');
             let student = await filterService.getStudentProfile(rollno);
+            const bitmaper = fs.readFileSync(process.cwd()+'/app/util/download.jpg');
+            console.log(bitmaper)
+            const pfp = bitmaper.toString('base64');
             let x=[student]
             var options = {
                 format: "A4",
@@ -94,14 +97,14 @@ const resumeDownload = async (rollno) => {
               .catch((error) => {
                 console.error(error);
             });      
-        setTimeout(()=>{
-            if (fs.existsSync(`./resume.pdf`)){	     
-                fs.unlinkSync(`./resume.pdf`, function (err) {
-                    if (err)
-                        throw err;
-                });
-            }
-        },2000);
+        // setTimeout(()=>{
+        //     if (fs.existsSync(`./resume.pdf`)){	     
+        //         fs.unlinkSync(`./resume.pdf`, function (err) {
+        //             if (err)
+        //                 throw err;
+        //         });
+        //     }
+        // },2000);
     } catch (error) {
         return error;
     }
