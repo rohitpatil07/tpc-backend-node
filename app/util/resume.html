@@ -70,6 +70,7 @@ header{
 .logo{
     height:50px;
     width: 20%;
+    margin-right:2%;
     background-image: url("data:image/jpg;base64,{{logo}}");
     background-repeat: no-repeat;
     background-size: cover;
@@ -253,7 +254,7 @@ li{
             </div>
             <div class="left_section_div">
                 {{#ifCond this.student_skillset.acad_achievement_one "!=" null}}
-                <h1 class="left_section_h1">Academic Achievements</h1>
+                <h1 class="left_section_h1" style="margin-top:1em;">Academic Achievements</h1>
                 {{/ifCond}}
                 <ul>
                     {{#ifCond this.student_skillset.acad_achievement_one "!=" null}}
@@ -297,7 +298,7 @@ li{
             <div>
                 {{#ifCond this.student_experience.project_one "!=" null}}
                 {{#ifCond this.student_experience.intership_one "!=" null}}
-                <div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center;">
+                <div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center; margin-top:0.7em;">
                     <span class="dot"></span>
                     <h1 class="right_section_h1"> Projects and internships ▶▶▶</h1>
                 </div>
@@ -305,7 +306,7 @@ li{
                 {{/ifCond}}
                 <div>
                     {{#ifCond this.student_experience.project_one "!=" null}}
-                    <div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center;">
+                    <div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center; margin-top:0.5em;">
                         <span class="sub_heading_dot"></span>
                         <h3 class="sub_heading">Projects</h3>
                     </div>
@@ -322,7 +323,7 @@ li{
 				</div>
 				<div>
                     {{#ifCond this.student_experience.intership_one "!=" null}}
-					<div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center;">
+					<div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center; margin-top:0.5em;">
                         <span class="sub_heading_dot"></span>
                         <h3 class="sub_heading">Internships</h3>
                     </div>             
@@ -340,7 +341,7 @@ li{
             </div>
             <div>
                 {{#ifCond this.other_info.extracuricular_one "!=" null}}
-                <div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center;">
+                <div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center;margin-top:0.7em;">
                     <span class="dot"></span>
                     <h1 class="right_section_h1">Extra curricular Achievements ▶▶▶</h1>
                 </div>
@@ -358,7 +359,7 @@ li{
             </div>
             <div>
                 {{#ifCond this.other_info.pos_of_res_one "!=" null}}
-                <div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center;">
+                <div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center; margin-top:0.7em;">
                     <span class="dot"></span>
                     <h1 class="right_section_h1">Position of Responsibility ▶▶▶</h1>
                 </div>
