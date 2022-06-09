@@ -297,7 +297,7 @@ li{
             </div>
             <div>
                 {{#ifCond this.student_experience.project_one "!=" null}}
-                {{#ifCond this.student_experience.intership_one "!=" null}}
+                {{#ifCond this.student_experience.internship_one "!=" null}}
                 <div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center; margin-top:0.7em;">
                     <span class="dot"></span>
                     <h1 class="right_section_h1"> Projects and internships ▶▶▶</h1>
@@ -322,19 +322,19 @@ li{
 					</ul>
 				</div>
 				<div>
-                    {{#ifCond this.student_experience.intership_one "!=" null}}
+                    {{#ifCond this.student_experience.internship_one "!=" null}}
 					<div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center; margin-top:0.5em;">
                         <span class="sub_heading_dot"></span>
                         <h3 class="sub_heading">Internships</h3>
                     </div>             
                     {{/ifCond}}
 					<ul>                
-                        {{#ifCond this.student_experience.intership_one "!=" null}}
-						<li>{{this.student_experience.intership_one}}</li>                
-                        {{/ifCond}} {{#ifCond this.student_experience.intership_two "!=" null}}
-						<li>{{this.student_experience.intership_two}}</li>
-                        {{/ifCond}} {{#ifCond this.student_experience.intership_three "!=" null}}
-						<li>{{this.student_experience.intership_three}}</li>
+                        {{#ifCond this.student_experience.internship_one "!=" null}}
+						<li>{{this.student_experience.internship_one}}</li>                
+                        {{/ifCond}} {{#ifCond this.student_experience.internship_two "!=" null}}
+						<li>{{this.student_experience.internship_two}}</li>
+                        {{/ifCond}} {{#ifCond this.student_experience.internship_three "!=" null}}
+						<li>{{this.student_experience.internship_three}}</li>
                         {{/ifCond}}
 						</ul>
 				</div>
