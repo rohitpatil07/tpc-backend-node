@@ -44,6 +44,8 @@ header{
 }
 .user_details{
     width:70%;
+    display: flex;
+    display: -webkit-flex;
 }
 .user_info{
     width:70%;  
@@ -54,6 +56,17 @@ header{
     -webkit-margin-start:0;
     -webkit-margin-end:0;
     margin:0;
+}
+.user_image{
+    width: 20%;
+    height: 103px;
+    border-radius: 50%;
+    position: relative;
+    top: 41px;
+    left: -25px;
+    background-image: url("data:image/jpg;base64,{{pfp}}");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .logo{
     height:90px;
@@ -67,6 +80,7 @@ header{
     width: 100%;
     height:15px;
 }
+
 .career_obj{
     background-color: #f6fbff;
     width:100%;
@@ -93,11 +107,11 @@ section{
     display: -webkit-flex;
 }
 .left_section{
-    width:45%;
+    width:40%;
     height:907px;
 }
 .right_section{
-    width:55%;
+    width:60%;
     height:907px;
     border-left: 2px solid #9f1d37;
     background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url("data:image/jpg;base64,{{background}}");
@@ -110,12 +124,18 @@ section{
 .right_section li{
     margin: 0;
 }
+.left_section_div{
+    margin-right: 5%;
+}
 .left_section_h1{
     margin: 0;
     font-size: 20px;
     width:95%;
     color: #f6fbff;
     background-color: #9f1d37;
+}
+.left_section_div h1{
+    width:100%;
 }
 table,
 th,
@@ -125,8 +145,8 @@ td {
 }
 table{
     font-size: 11.5px;
-    width:96%;
-    margin:2%;
+    width:94%;
+    margin:1%;
 }
 td{
     text-align: center;
@@ -147,6 +167,24 @@ li{
     margin: 0;
     font-size: 15px;
     color:#9f1d37;
+}
+.dot{
+    border: 2px solid black;
+    border-radius: 50%;
+    position: relative;
+    left: -1.5%;
+    background-color: black;
+    height: 9px;
+    width: 9px;
+}
+.sub_heading_dot{
+    border: 2px solid black;
+    border-radius: 50%;
+    position: relative;
+    left: -1.3%;
+    background-color: black;
+    height: 6px;
+    width: 6px; 
 }
 </style>
 <body>
@@ -215,7 +253,7 @@ li{
                     </tr>
                 </table>
             </div>
-            <div>
+            <div class="left_section_div">
                 {{#ifCond this.student_skillset.acad_achievement_one "!=" null}}
                 <h1 class="left_section_h1">Academic Achievements</h1>
                 {{/ifCond}}
@@ -229,7 +267,7 @@ li{
                     {{/ifCond}} 
                 </ul>
             </div>
-            <div>
+            <div class="left_section_div">
                 <h1 class="left_section_h1">Additional Information</h1>
                 <ul>
                     <li>1. Prefered language: {{this.student_experience.pref_lang}}</li>
@@ -243,7 +281,10 @@ li{
         <div class="right_section">
             <div>
                 {{#ifCond this.student_skillset.certificate_one "!=" null}}
-                <h1 class="right_section_h1"> Certifications ▶▶▶</h1>
+                <div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center;">
+                    <span class="dot"></span>
+                <h1 class="right_section_h1">Certifications ▶▶▶</h1>
+                </div>
                 {{/ifCond}}
                 <ul>
                     {{#ifCond this.student_skillset.certificate_one "!=" null}}
@@ -258,12 +299,18 @@ li{
             <div>
                 {{#ifCond this.student_experience.project_one "!=" null}}
                 {{#ifCond this.student_experience.intership_one "!=" null}}
-				<h1 class="right_section_h1"> Projects and internships ▶▶▶</h1>
+                <div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center;">
+                    <span class="dot"></span>
+                    <h1 class="right_section_h1"> Projects and internships ▶▶▶</h1>
+                </div>
 				{{/ifCond}}
                 {{/ifCond}}
                 <div>
                     {{#ifCond this.student_experience.project_one "!=" null}}
-					<h3 class="sub_heading">Projects</h3>
+                    <div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center;">
+                        <span class="sub_heading_dot"></span>
+                        <h3 class="sub_heading">Projects</h3>
+                    </div>
                     {{/ifCond}}
 					<ul>
                         {{#ifCond this.student_experience.project_one "!=" null}}
@@ -277,7 +324,10 @@ li{
 				</div>
 				<div>
                     {{#ifCond this.student_experience.intership_one "!=" null}}
-					<h3 class="sub_heading">Internships</h3>              
+					<div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center;">
+                        <span class="sub_heading_dot"></span>
+                        <h3 class="sub_heading">Internships</h3>
+                    </div>             
                     {{/ifCond}}
 					<ul>                
                         {{#ifCond this.student_experience.intership_one "!=" null}}
@@ -292,7 +342,11 @@ li{
             </div>
             <div>
                 {{#ifCond this.other_info.extracuricular_one "!=" null}}
-                <h1 class="right_section_h1">Extra curricular Achievements ▶▶▶</h1>
+                <div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center;">
+                    <span class="dot"></span>
+                    <h1 class="right_section_h1">Extra curricular Achievements ▶▶▶</h1>
+                </div>
+                
                 {{/ifCond}}
 				<ul>
                     {{#ifCond this.other_info.extracuricular_one "!=" null}}
@@ -306,7 +360,11 @@ li{
             </div>
             <div>
                 {{#ifCond this.other_info.pos_of_res_one "!=" null}}
-				<h1 class="right_section_h1">Position of Responsibility ▶▶▶</h1>
+                <div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center;">
+                    <span class="dot"></span>
+                    <h1 class="right_section_h1">Position of Responsibility ▶▶▶</h1>
+                </div>
+				
                 {{/ifCond}}
 				<ul>                
                     {{#ifCond this.other_info.pos_of_res_one "!=" null}}

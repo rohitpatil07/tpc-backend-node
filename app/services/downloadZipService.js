@@ -24,7 +24,7 @@ const zipDownload = async (students) => {
                 data: {
                   users:x,
                   logo: logo,
-                  background: background,
+                  background:background,
                 },
                 path: `./Zip/output${i}.pdf`,
                 type: "",
@@ -70,10 +70,9 @@ const resumeDownload = async (rollno) => {
         const logo = bitmap.toString('base64');
         const bitmap2= fs.readFileSync(process.cwd()+'/app/util/rait_background.jpg');
         const background = bitmap2.toString('base64');
-            let student = await filterService.getStudentProfile(rollno);
-            const bitmaper = fs.readFileSync(process.cwd()+'/app/util/download.jpg');
-            console.log(bitmaper)
-            const pfp = bitmaper.toString('base64');
+        let student = await filterService.getStudentProfile(rollno);
+        const bitmaper = fs.readFileSync(process.cwd()+'/app/util/download.jpg');
+        const pfp = bitmaper.toString('base64');
             let x=[student]
             var options = {
                 format: "A4",
@@ -85,6 +84,7 @@ const resumeDownload = async (rollno) => {
                 data: {
                   users:x,
                   logo: logo,
+                  pfp: pfp,
                   background:background,
                 },
                 path: `./resume.pdf`,
