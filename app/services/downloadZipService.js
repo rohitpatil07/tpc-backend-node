@@ -1,7 +1,7 @@
 import pdf from "pdf-creator-node";
 import fs from "fs";
 import AdmZip from 'adm-zip';
-var html = fs.readFileSync(process.cwd() + '/app/util/table.html', "utf8");
+var html = fs.readFileSync(process.cwd() + '/app/util/resume.html', "utf8");
 import filterService from '../services/filterservice.js';
 
 
@@ -9,6 +9,8 @@ const zipDownload = async (students) => {
     try {
         const bitmap = fs.readFileSync(process.cwd()+'/app/util/rait2.jpg');
         const logo = bitmap.toString('base64');
+        const bitmap2= fs.readFileSync(process.cwd()+'/app/util/rait_background.jpg');
+        const background = bitmap2.toString('base64');
         for(let i = 0; i<students.length;i++){
             let student = await filterService.getStudentProfile(students[i]);
             let x=[student]
@@ -22,6 +24,7 @@ const zipDownload = async (students) => {
                 data: {
                   users:x,
                   logo: logo,
+                  background: background,
                 },
                 path: `./Zip/output${i}.pdf`,
                 type: "",
@@ -65,6 +68,8 @@ const resumeDownload = async (rollno) => {
     try {
         const bitmap = fs.readFileSync(process.cwd()+'/app/util/rait2.jpg');
         const logo = bitmap.toString('base64');
+        const bitmap2= fs.readFileSync(process.cwd()+'/app/util/rait_background.jpg');
+        const background = bitmap2.toString('base64');
             let student = await filterService.getStudentProfile(rollno);
             let x=[student]
             var options = {
@@ -77,6 +82,7 @@ const resumeDownload = async (rollno) => {
                 data: {
                   users:x,
                   logo: logo,
+                  background:background,
                 },
                 path: `./resume.pdf`,
                 type: "",
