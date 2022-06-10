@@ -86,6 +86,68 @@ const dashboardFilter = async (where_queries, select_fields) => {
   }
 };
 
+const paginatedDashboardFilter = async (
+  where_queries,
+  select_fields,
+  page,
+  limit,
+) => {
+  try {
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+
+    console.log(typeof page);
+    console.log(typeof limit);
+
+    console.log(startIndex, endIndex);
+
+    const students = await prisma.students.findMany({
+      where: where_queries,
+      select: select_fields,
+      skip: startIndex,
+      take: endIndex - startIndex,
+    });
+
+    for (let info in students) {
+      students[info] = bigIntParser(students[info]);
+    }
+
+    let results = {};
+    results['students'] = students;
+
+    if (page == 1) {
+      results['previous'] = 1;
+    } else {
+      results['previous'] = page - 1;
+    }
+
+    if (results.students.length < 1) {
+      results['next'] = 2;
+
+      const students = await prisma.students.findMany({
+        where: where_queries,
+        select: select_fields,
+        skip: 0,
+        take: limit,
+      });
+
+      for (let info in students) {
+        students[info] = bigIntParser(students[info]);
+      }
+
+      results['students'] = students;
+    } else if (results.students.length < limit) {
+      results['next'] = 1;
+    } else {
+      results['next'] = page + 1;
+    }
+
+    return results;
+  } catch (error) {
+    return error;
+  }
+};
+
 const cgpaGreater = async (data) => {
   try {
     let eligible = await prisma.academic_info.findMany({
@@ -187,4 +249,5 @@ export default {
   dashboardFilter,
   cgpaGreater,
   getNotifStudents,
+  paginatedDashboardFilter,
 };

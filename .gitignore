@@ -121,6 +121,11 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+#files
+*.pdf
+*.xlsx
+*.csv
+
 
 
 
