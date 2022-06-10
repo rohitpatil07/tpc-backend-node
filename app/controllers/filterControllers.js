@@ -55,6 +55,26 @@ const dashboardFilter = async (req, res) => {
   }
 };
 
+const paginatedDashboardFilter = async (req, res) => {
+  try {
+    let data = req.body;
+    const page = parseInt(req.params.page);
+    const limit = parseInt(req.params.limit);
+    let select_fields = await objectify(data);
+    let where_queries = data.queries;
+    let results = await filterService.paginatedDashboardFilter(
+      where_queries,
+      select_fields,
+      page,
+      limit,
+    );
+
+    res.json({ results: results });
+  } catch (error) {
+    res.json(error);
+  }
+};
+
 const cgpaGreater = async (req, res) => {
   try {
     let data = req.body.data;
@@ -81,6 +101,7 @@ export default {
   getStudentsByDept,
   getStudentProfile,
   dashboardFilter,
+  paginatedDashboardFilter,
   cgpaGreater,
   getNotifStudents,
 };
