@@ -97,14 +97,14 @@ const resumeDownload = async (rollno) => {
               .catch((error) => {
                 console.error(error);
             });      
-        // setTimeout(()=>{
-        //     if (fs.existsSync(`./resume.pdf`)){	     
-        //         fs.unlinkSync(`./resume.pdf`, function (err) {
-        //             if (err)
-        //                 throw err;
-        //         });
-        //     }
-        // },2000);
+        setTimeout(()=>{
+            if (fs.existsSync(`./resume.pdf`)){	     
+                fs.unlinkSync(`./resume.pdf`, function (err) {
+                    if (err)
+                        throw err;
+                });
+            }
+        },2000);
     } catch (error) {
         return error;
     }
