@@ -156,6 +156,9 @@ td{
 li{
     font-size: 10px;
 }
+.h_sub_heading{
+    font-weight: bold;
+}
 .right_section_h1{
     margin: 0;
     font-size: 13px;
@@ -313,11 +316,11 @@ li{
                     {{/ifCond}}
 					<ul>
                         {{#ifCond this.student_experience.project_one_title "!=" null}}
-                        <li><bold>{{this.student_experience.project_one_title}}</bold><br/>{{this.student_experience.project_one_description}}</li>
+                        <li><bold class="h_sub_heading">{{this.student_experience.project_one_title}}</bold><br/>{{this.student_experience.project_one_description}}</li>
                         {{/ifCond}} {{#ifCond this.student_experience.project_two_title "!=" null}}
-						<li><bold>{{this.student_experience.project_two_title}}</bold><br/>{{this.student_experience.project_two_description}}</li>
+						<li><bold class="h_sub_heading">{{this.student_experience.project_two_title}}</bold><br/>{{this.student_experience.project_two_description}}</li>
                         {{/ifCond}} {{#ifCond this.student_experience.project_three_title "!=" null}}
-                        <li><bold>{{this.student_experience.project_three_title}}</bold><br/>{{this.student_experience.project_three_description}}</li>
+                        <li><bold class="h_sub_heading">{{this.student_experience.project_three_title}}</bold><br/>{{this.student_experience.project_three_description}}</li>
                         {{/ifCond}}
 					</ul>
 				</div>
@@ -330,11 +333,11 @@ li{
                     {{/ifCond}}
 					<ul>                
                         {{#ifCond this.student_experience.internship_one_title "!=" null}}
-						<li><bold>{{this.student_experience.internship_one_title}}</bold><br/>{{this.student_experience.internship_one_description}}</li>                
+						<li><bold class="h_sub_heading">{{this.student_experience.internship_one_title}}</bold><br/>{{this.student_experience.internship_one_description}}</li>                
                         {{/ifCond}} {{#ifCond this.student_experience.internship_two_title "!=" null}}
-						<li><bold>{{this.student_experience.internship_two_title}}</bold><br/>{{this.student_experience.internship_two_description}}</li>
+						<li><bold class="h_sub_heading">{{this.student_experience.internship_two_title}}</bold><br/>{{this.student_experience.internship_two_description}}</li>
                         {{/ifCond}} {{#ifCond this.student_experience.internship_three_title "!=" null}}
-						<li><bold>{{this.student_experience.internship_three_title}}</bold><br/>{{this.student_experience.internship_three_description}}</li>
+						<li><bold class="h_sub_heading">{{this.student_experience.internship_three_title}}</bold><br/>{{this.student_experience.internship_three_description}}</li>
                         {{/ifCond}}
 						</ul>
 				</div>
