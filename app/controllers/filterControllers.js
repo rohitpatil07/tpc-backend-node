@@ -45,6 +45,7 @@ const dashboardFilter = async (req, res) => {
     let data = req.body;
     let select_fields = await objectify(data);
     let where_queries = data.queries;
+    console.log(select_fields);
     let student = await filterService.dashboardFilter(
       where_queries,
       select_fields,
