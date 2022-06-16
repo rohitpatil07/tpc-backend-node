@@ -251,13 +251,13 @@ model student_experience {
 
 model student_placement_details {
   roll_no            String   @id @db.VarChar(10)
-  offer_letter_one   String   @db.VarChar(100)
-  offer_letter_two   String   @db.VarChar(100)
+  offer_letter_one   Bytes?
+  offer_letter_two   Bytes?
   placed_org_one     String?  @db.VarChar(100)
   placed_org_two     String?  @db.VarChar(100)
   package_one        Decimal? @db.Decimal(12, 4)
   package_two        Decimal? @db.Decimal(12, 4)
-  offer_letter_three String   @db.VarChar(100)
+  offer_letter_three Bytes?
   package_three      Decimal? @db.Decimal(12, 4)
   placed_company     String?  @db.VarChar(50)
   placed_org_three   String?  @db.VarChar(100)
@@ -297,7 +297,7 @@ model students {
   linkedin                  String?                     @db.VarChar(50)
   no_of_offers              Int?
   password                  String                      @db.VarChar(100)
-  photo                     String                      @db.VarChar(100)
+  photo                     Bytes?
   department                String?                     @db.VarChar(50)
   batch                     Int?
   rait_email                String?                     @unique(map: "rait_email") @db.VarChar(50)
