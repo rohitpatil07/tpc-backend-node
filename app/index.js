@@ -6,6 +6,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 import expressWinston from 'express-winston';
 import winston from 'winston';
+import fileUpload from 'express-fileupload';
 
 const PORT = config.PORT || 3000;
 
@@ -13,6 +14,8 @@ const startServer = () => {
   const app = express();
 
   app.use(helmet());
+
+  app.use(fileUpload());
   app.use(
     cors({
       origin: config.CORS_ORIGIN,
