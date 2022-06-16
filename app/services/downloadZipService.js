@@ -3,6 +3,7 @@ import fs from 'fs';
 import AdmZip from 'adm-zip';
 var html = fs.readFileSync(process.cwd() + '/app/util/resume.html', 'utf8');
 import filterService from '../services/filterservice.js';
+import imageService from '../services/imageService.js';
 
 const zipDownload = async (students) => {
   try {
@@ -71,8 +72,10 @@ const resumeDownload = async (rollno) => {
     );
     const background = bitmap2.toString('base64');
     let student = await filterService.getStudentProfile(rollno);
-    const bitmaper = fs.readFileSync(process.cwd() + '/app/util/download.jpg');
-    const pfp = bitmaper.toString('base64');
+    const pro = await imageService.downloadImage(rollno); 
+    const pfp = pro['photo'];
+    console.log("photo: ",pfp); 
+    
     let x = [student];
     var options = {
       format: 'A4',

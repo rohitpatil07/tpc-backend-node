@@ -290,11 +290,11 @@ li{
                 {{/ifCond}}
                 <ul>
                     {{#ifCond this.student_skillset.certificate_one "!=" null}}
-                    <li>{{this.student_skillset.certificate_one}}</li>
+                    <li>{{this.student_skillset.certificate_one}} <br/><bold class="h_sub_heading">{{this.student_skillset.certificate_one_completion_date}}</bold></li>
                     {{/ifCond}} {{#ifCond this.student_skillset.certificate_two "!=" null}}
-                    <li>{{this.student_skillset.certificate_two}}</li>
+                    <li>{{this.student_skillset.certificate_two}} <br/><bold class="h_sub_heading">{{this.student_skillset.certificate_two_completion_date}}</bold></li>
                     {{/ifCond}} {{#ifCond this.student_skillset.certificate_three "!=" null}}
-                    <li>{{this.student_skillset.certificate_three}}</li>
+                    <li>{{this.student_skillset.certificate_three}} <br/><bold class="h_sub_heading">{{this.student_skillset.certificate_three_completion_date}}</bold></li>
                     {{/ifCond}}
                 </ul>
             </div>
@@ -316,11 +316,11 @@ li{
                     {{/ifCond}}
 					<ul>
                         {{#ifCond this.student_experience.project_one_title "!=" null}}
-                        <li><bold class="h_sub_heading">{{this.student_experience.project_one_title}}</bold><br/>{{this.student_experience.project_one_description}}</li>
+                        <li><bold class="h_sub_heading">{{this.student_experience.project_one_title}}</bold><br/>{{this.student_experience.project_one_description}}<br/><bold class="h_sub_heading">{{this.student_experience.project_one_end_date}}</bold></li>
                         {{/ifCond}} {{#ifCond this.student_experience.project_two_title "!=" null}}
-						<li><bold class="h_sub_heading">{{this.student_experience.project_two_title}}</bold><br/>{{this.student_experience.project_two_description}}</li>
+						<li><bold class="h_sub_heading">{{this.student_experience.project_two_title}}</bold><br/>{{this.student_experience.project_two_description}}<br/><bold class="h_sub_heading">{{this.student_experience.project_two_end_date}}</bold></li>
                         {{/ifCond}} {{#ifCond this.student_experience.project_three_title "!=" null}}
-                        <li><bold class="h_sub_heading">{{this.student_experience.project_three_title}}</bold><br/>{{this.student_experience.project_three_description}}</li>
+                        <li><bold class="h_sub_heading">{{this.student_experience.project_three_title}}</bold><br/>{{this.student_experience.project_three_description}}<br/><bold class="h_sub_heading">{{this.student_experience.project_three_end_date}}</bold></li>
                         {{/ifCond}}
 					</ul>
 				</div>
@@ -333,11 +333,11 @@ li{
                     {{/ifCond}}
 					<ul>                
                         {{#ifCond this.student_experience.internship_one_title "!=" null}}
-						<li><bold class="h_sub_heading">{{this.student_experience.internship_one_title}}</bold><br/>{{this.student_experience.internship_one_description}}</li>                
+						<li><bold class="h_sub_heading">{{this.student_experience.internship_one_title}}</bold><br/>{{this.student_experience.internship_one_description}}<br/><bold class="h_sub_heading">{{this.student_experience.internship_one_end_date}}</bold></li>                
                         {{/ifCond}} {{#ifCond this.student_experience.internship_two_title "!=" null}}
-						<li><bold class="h_sub_heading">{{this.student_experience.internship_two_title}}</bold><br/>{{this.student_experience.internship_two_description}}</li>
+						<li><bold class="h_sub_heading">{{this.student_experience.internship_two_title}}</bold><br/>{{this.student_experience.internship_two_description}}<br/><bold class="h_sub_heading">{{this.student_experience.internship_two_end_date}}</bold></li>
                         {{/ifCond}} {{#ifCond this.student_experience.internship_three_title "!=" null}}
-						<li><bold class="h_sub_heading">{{this.student_experience.internship_three_title}}</bold><br/>{{this.student_experience.internship_three_description}}</li>
+						<li><bold class="h_sub_heading">{{this.student_experience.internship_three_title}}</bold><br/>{{this.student_experience.internship_three_description}}<br/><bold class="h_sub_heading">{{this.student_experience.internship_three_end_date}}</bold></li>
                         {{/ifCond}}
 						</ul>
 				</div>
