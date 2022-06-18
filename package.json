@@ -1,5 +1,5 @@
 {
-    "name": "cake-o-mania-backend",
+    "name": "tpc-backend",
     "version": "1.0.0",
     "description": "Backend for TPC Portal of RAIT",
     "main": "index.js",
