@@ -6,9 +6,6 @@ const uploadImage = async (req, res) => {
     const roll_no = String(req.params.roll_no);
     const image = req.files.profile;
 
-    console.log('Files : ', req.files);
-    console.log('BODY : ', req.body);
-
     console.log(image);
 
     if (image.size <= 256000) {
