@@ -136,6 +136,9 @@ section{
 .left_section_div h1{
     width:100%;
 }
+.left_section_div ul{
+    margin:0;
+}
 table,
 th,
 td {
@@ -158,6 +161,9 @@ li{
 }
 .h_sub_heading{
     font-weight: bold;
+}
+.h_sub_heading_date{
+    font-size:8px;
 }
 .right_section_h1{
     margin: 0;
@@ -257,7 +263,7 @@ li{
             </div>
             <div class="left_section_div">
                 {{#ifCond this.student_skillset.acad_achievement_one "!=" null}}
-                <h1 class="left_section_h1" style="margin-top:1em;">Academic Achievements</h1>
+                <h1 class="left_section_h1" style="margin-top:0.3em;">Academic Achievements</h1>
                 {{/ifCond}}
                 <ul>
                     {{#ifCond this.student_skillset.acad_achievement_one "!=" null}}
@@ -270,15 +276,32 @@ li{
                 </ul>
             </div>
             <div class="left_section_div">
-                <h1 class="left_section_h1">Additional Information</h1>
+                <h1 class="left_section_h1" style="margin-top:0.3em;">Additional Information</h1>
                 <ul>
-                    <li>1. Prefered language: {{this.student_experience.pref_lang}}</li>
-                    <li>2. Technologies known: {{this.student_experience.technologies}}</li>
+                    <li>Prefered language: {{this.student_experience.pref_lang}}</li>
+                    <li>Technologies known: {{this.student_experience.technologies}}</li>
                     {{#ifCond this.other_info.hobbies "!=" null}}
-                    <li>3. Hobbies: {{this.other_info.hobbies}}</li>
+                    <li>Hobbies: {{this.other_info.hobbies}}</li>
                     {{/ifCond}}
                 </ul>
             </div>
+            <div class="left_section_div" style="margin-top:0.3em;">
+                {{#ifCond this.other_info.extracuricular_one "!=" null}}
+                    <h1 class="left_section_h1">Extra curricular Achievements ▶▶▶</h1>
+                {{/ifCond}}
+                </div>
+				<ul>
+                    {{#ifCond this.other_info.extracuricular_one "!=" null}}
+                    <li>{{this.other_info.extracuricular_one}}</li>
+                    {{/ifCond}} {{#ifCond this.other_info.extracuricular_two "!=" null}}
+					<li>{{this.other_info.extracuricular_two}}</li>
+                    {{/ifCond}} {{#ifCond this.other_info.extracuricular_three "!=" null}}
+					<li>{{this.other_info.extracuricular_three}}</li>
+                    {{/ifCond}}
+				</ul>
+            </div>
+
+
         </div>
         <div class="right_section">
             <div>
@@ -290,18 +313,18 @@ li{
                 {{/ifCond}}
                 <ul>
                     {{#ifCond this.student_skillset.certificate_one "!=" null}}
-                    <li>{{this.student_skillset.certificate_one}}</li>
+                    <li>{{this.student_skillset.certificate_one}} <br/><bold class="h_sub_heading_date">{{this.student_skillset.certificate_one_completion_date}}</bold></li>
                     {{/ifCond}} {{#ifCond this.student_skillset.certificate_two "!=" null}}
-                    <li>{{this.student_skillset.certificate_two}}</li>
+                    <li>{{this.student_skillset.certificate_two}} <br/><bold class="h_sub_heading_date">{{this.student_skillset.certificate_two_completion_date}}</bold></li>
                     {{/ifCond}} {{#ifCond this.student_skillset.certificate_three "!=" null}}
-                    <li>{{this.student_skillset.certificate_three}}</li>
+                    <li>{{this.student_skillset.certificate_three}} <br/><bold class="h_sub_heading_date">{{this.student_skillset.certificate_three_completion_date}}</bold></li>
                     {{/ifCond}}
                 </ul>
             </div>
             <div>
                 {{#ifCond this.student_experience.project_one_title "!=" null}}
                 {{#ifCond this.student_experience.internship_one_title "!=" null}}
-                <div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center; margin-top:0.7em;">
+                <div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center; margin-top:0.3em;">
                     <span class="dot"></span>
                     <h1 class="right_section_h1"> Projects and internships ▶▶▶</h1>
                 </div>
@@ -309,60 +332,42 @@ li{
                 {{/ifCond}}
                 <div>
                     {{#ifCond this.student_experience.project_one_title "!=" null}}
-                    <div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center; margin-top:0.5em;">
+                    <div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center;">
                         <span class="sub_heading_dot"></span>
                         <h3 class="sub_heading">Projects</h3>
                     </div>
                     {{/ifCond}}
 					<ul>
                         {{#ifCond this.student_experience.project_one_title "!=" null}}
-                        <li><bold class="h_sub_heading">{{this.student_experience.project_one_title}}</bold><br/>{{this.student_experience.project_one_description}}</li>
+                        <li><bold class="h_sub_heading">{{this.student_experience.project_one_title}}</bold><br/>{{this.student_experience.project_one_description}}<br/><bold class="h_sub_heading_date">{{this.student_experience.project_one_end_date}}</bold></li>
                         {{/ifCond}} {{#ifCond this.student_experience.project_two_title "!=" null}}
-						<li><bold class="h_sub_heading">{{this.student_experience.project_two_title}}</bold><br/>{{this.student_experience.project_two_description}}</li>
+						<li><bold class="h_sub_heading">{{this.student_experience.project_two_title}}</bold><br/>{{this.student_experience.project_two_description}}<br/><bold class="h_sub_heading_date">{{this.student_experience.project_two_end_date}}</bold></li>
                         {{/ifCond}} {{#ifCond this.student_experience.project_three_title "!=" null}}
-                        <li><bold class="h_sub_heading">{{this.student_experience.project_three_title}}</bold><br/>{{this.student_experience.project_three_description}}</li>
+                        <li><bold class="h_sub_heading">{{this.student_experience.project_three_title}}</bold><br/>{{this.student_experience.project_three_description}}<br/><bold class="h_sub_heading_date">{{this.student_experience.project_three_end_date}}</bold></li>
                         {{/ifCond}}
 					</ul>
 				</div>
 				<div>
                     {{#ifCond this.student_experience.internship_one_title "!=" null}}
-					<div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center; margin-top:0.5em;">
+					<div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center;">
                         <span class="sub_heading_dot"></span>
                         <h3 class="sub_heading">Internships</h3>
                     </div>             
                     {{/ifCond}}
 					<ul>                
                         {{#ifCond this.student_experience.internship_one_title "!=" null}}
-						<li><bold class="h_sub_heading">{{this.student_experience.internship_one_title}}</bold><br/>{{this.student_experience.internship_one_description}}</li>                
+						<li><bold class="h_sub_heading">{{this.student_experience.internship_one_title}}</bold><br/>{{this.student_experience.internship_one_description}}<br/><bold class="h_sub_heading_date">{{this.student_experience.internship_one_end_date}}</bold></li>                
                         {{/ifCond}} {{#ifCond this.student_experience.internship_two_title "!=" null}}
-						<li><bold class="h_sub_heading">{{this.student_experience.internship_two_title}}</bold><br/>{{this.student_experience.internship_two_description}}</li>
+						<li><bold class="h_sub_heading">{{this.student_experience.internship_two_title}}</bold><br/>{{this.student_experience.internship_two_description}}<br/><bold class="h_sub_heading_date">{{this.student_experience.internship_two_end_date}}</bold></li>
                         {{/ifCond}} {{#ifCond this.student_experience.internship_three_title "!=" null}}
-						<li><bold class="h_sub_heading">{{this.student_experience.internship_three_title}}</bold><br/>{{this.student_experience.internship_three_description}}</li>
+						<li><bold class="h_sub_heading">{{this.student_experience.internship_three_title}}</bold><br/>{{this.student_experience.internship_three_description}}<br/><bold class="h_sub_heading_date">{{this.student_experience.internship_three_end_date}}</bold></li>
                         {{/ifCond}}
 						</ul>
 				</div>
             </div>
             <div>
-                {{#ifCond this.other_info.extracuricular_one "!=" null}}
-                <div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center;margin-top:0.7em;">
-                    <span class="dot"></span>
-                    <h1 class="right_section_h1">Extra curricular Achievements ▶▶▶</h1>
-                </div>
-                
-                {{/ifCond}}
-				<ul>
-                    {{#ifCond this.other_info.extracuricular_one "!=" null}}
-                    <li>{{this.other_info.extracuricular_one}}</li>
-                    {{/ifCond}} {{#ifCond this.other_info.extracuricular_two "!=" null}}
-					<li>{{this.other_info.extracuricular_two}}</li>
-                    {{/ifCond}} {{#ifCond this.other_info.extracuricular_three "!=" null}}
-					<li>{{this.other_info.extracuricular_three}}</li>
-                    {{/ifCond}}
-				</ul>
-            </div>
-            <div>
                 {{#ifCond this.other_info.pos_of_res_one "!=" null}}
-                <div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center; margin-top:0.7em;">
+                <div style="display:flex;display: -webkit-flex; align-items:center;-webkit-align-items:center; margin-top:0.3em;">
                     <span class="dot"></span>
                     <h1 class="right_section_h1">Position of Responsibility ▶▶▶</h1>
                 </div>
