@@ -11,7 +11,7 @@ const getCompany = async () => {
           console.log("company", comp)
   
       let ra = [];
-      for (let i = 0; i < comp.length-1; i++) {
+      for (let i = 1; i < comp.length; i++) {
         let refined_object = {
           placed_company: comp[i].placed_company,
           placed_package: comp[i].placed_package,
