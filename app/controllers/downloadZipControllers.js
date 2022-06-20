@@ -17,7 +17,7 @@ const resumeDownload = async (req, res) => {
     const rollno = req.body.data;
     await downloadZipService.resumeDownload(rollno);
     setTimeout(()=>{
-      res.download('resume.pdf');
+      res.download(`${rollno}_resume.pdf`);
     },500);
   } catch (error) {
     res.json(error);

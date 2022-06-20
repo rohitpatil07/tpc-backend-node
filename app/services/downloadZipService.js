@@ -15,6 +15,8 @@ const zipDownload = async (students) => {
     const background = bitmap2.toString('base64');
     for (let i = 0; i < students.length; i++) {
       let student = await filterService.getStudentProfile(students[i]);
+      const pro = await imageService.downloadImage(students[i]); 
+    const pfp = pro['photo'];
       let x = [student];
       var options = {
         format: 'A4',
@@ -26,9 +28,10 @@ const zipDownload = async (students) => {
         data: {
           users: x,
           logo: logo,
+          pfp: pfp,
           background: background,
         },
-        path: `./Zip/output${i}.pdf`,
+        path: `./Zip/${students[i]}_resume.pdf`,
         type: '',
       };
       await pdf
@@ -55,7 +58,7 @@ const zipDownload = async (students) => {
       }
       var CleanDir = fs.readdirSync('./Zip');
       for (var v = 0; v < CleanDir.length; v++) {
-        fs.unlinkSync(`./Zip/output${v}.pdf`);
+        fs.unlinkSync(`./Zip/`+ CleanDir[v]);
       }
     }, 2500);
   } catch (error) {
@@ -74,8 +77,6 @@ const resumeDownload = async (rollno) => {
     let student = await filterService.getStudentProfile(rollno);
     const pro = await imageService.downloadImage(rollno); 
     const pfp = pro['photo'];
-    console.log("photo: ",pfp); 
-    
     let x = [student];
     var options = {
       format: 'A4',
@@ -90,7 +91,7 @@ const resumeDownload = async (rollno) => {
         pfp: pfp,
         background: background,
       },
-      path: `./resume.pdf`,
+      path: `./${rollno}_resume.pdf`,
       type: '',
     };
     await pdf
@@ -100,8 +101,8 @@ const resumeDownload = async (rollno) => {
         console.error(error);
       });
     setTimeout(() => {
-      if (fs.existsSync(`./resume.pdf`)) {
-        fs.unlinkSync(`./resume.pdf`, function (err) {
+      if (fs.existsSync(`./${rollno}_resume.pdf`)) {
+        fs.unlinkSync(`./${rollno}_resume.pdf`, function (err) {
           if (err) throw err;
         });
       }
