@@ -5,9 +5,6 @@ const uploadImage = async (req, res) => {
   try {
     const roll_no = String(req.params.roll_no);
     const image = req.files.profile;
-
-    console.log(image);
-
     if (image.size <= 256000) {
       const b64 = Buffer.from(image.data).toString('base64');
 

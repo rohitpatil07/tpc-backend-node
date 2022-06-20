@@ -75,8 +75,12 @@ const resumeDownload = async (rollno) => {
     );
     const background = bitmap2.toString('base64');
     let student = await filterService.getStudentProfile(rollno);
-    const pro = await imageService.downloadImage(rollno); 
+    const pro = await imageService.downloadImage(rollno);
     const pfp = pro['photo'];
+<<<<<<< HEAD
+=======
+
+>>>>>>> b29e0d2fc6474578e9efa33b5b9b22c68933eeb3
     let x = [student];
     var options = {
       format: 'A4',

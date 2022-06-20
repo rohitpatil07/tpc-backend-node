@@ -1,5 +1,5 @@
 {
-    "name": "cake-o-mania-backend",
+    "name": "tpc-backend",
     "version": "1.0.0",
     "description": "Backend for TPC Portal of RAIT",
     "main": "index.js",
@@ -41,6 +41,7 @@
         "express-winston": "^4.2.0",
         "helmet": "^5.0.2",
         "json-bigint": "^1.0.0",
+        "multer": "^1.4.5-lts.1",
         "mysql2": "^2.3.3",
         "pdf-creator-node": "^2.3.4",
         "winston": "^3.6.0",
