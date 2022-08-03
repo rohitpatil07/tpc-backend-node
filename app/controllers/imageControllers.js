@@ -9,9 +9,11 @@ const uploadImage = async (req, res) => {
       const b64 = Buffer.from(image.data).toString('base64');
 
       const message = await imageService.uploadImage(roll_no, b64);
-      res.json({ message: message });
+      res.status(200).json({ message: message, status: 200 });
     } else {
-      res.json({ message: 'Please upload file size of 256kb or less' });
+      res.json({
+        message: 'Please upload file size of 256kb or less',
+      });
     }
   } catch (error) {
     res.json(error);
@@ -53,7 +55,11 @@ const offerupload = async (req, res) => {
     if (image.size <= 256000) {
       const b64 = Buffer.from(image.data).toString('base64');
 
-      const message = await imageService.offerupload(roll_no, b64, offer_letter);
+      const message = await imageService.offerupload(
+        roll_no,
+        b64,
+        offer_letter,
+      );
       res.json({ message: message });
     } else {
       res.json({ message: 'Please upload file size of 256kb or less' });
