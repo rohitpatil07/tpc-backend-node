@@ -32,7 +32,6 @@ const objectify = async (data) => {
   }
 
   let final_select_object = await other_tables(data.fields);
-  console.log(final_select_object);
   selection_object.academic_info = final_select_object.academic_info;
   selection_object.other_info = final_select_object.other_info;
   selection_object.student_skillset = final_select_object.student_skillset;
@@ -85,7 +84,6 @@ const other_tables = async (select_object) => {
   };
 
   for (let key in select_object) {
-    console.log("Hello",key);
     if (
       key == 'acad_achievement' ||
       key == 'career_obj' ||

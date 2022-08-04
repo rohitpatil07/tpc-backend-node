@@ -80,6 +80,7 @@ const dashboardFilter = async (where_queries, select_fields) => {
       data[info] = bigIntParser(data[info]);
     }
     const student = data;
+    console.log(data);
     return student;
   } catch (error) {
     return error;
@@ -148,12 +149,10 @@ const paginatedDashboardFilter = async (
   }
 };
 
-const cgpaGreater = async (data) => {
+const cgpaGreater = async (hello) => {
   try {
     let eligible = await prisma.academic_info.findMany({
-      where: {
-        cgpa: { gte: data },
-      },
+      where: hello,
 
       include: {
         students: {

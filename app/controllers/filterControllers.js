@@ -1,4 +1,5 @@
 import filterService from '../services/filterservice.js';
+import filterify from '../util/filterUtility.js';
 import objectify from '../util/objectUtility.js';
 
 const getAllStudents = async (req, res) => {
@@ -45,7 +46,6 @@ const dashboardFilter = async (req, res) => {
     let data = req.body;
     let select_fields = await objectify(data);
     let where_queries = data.queries;
-    console.log(select_fields);
     let student = await filterService.dashboardFilter(
       where_queries,
       select_fields,
@@ -78,8 +78,8 @@ const paginatedDashboardFilter = async (req, res) => {
 
 const cgpaGreater = async (req, res) => {
   try {
-    let data = req.body.data;
-    let student = await filterService.cgpaGreater(data);
+    let hello = await filterify(req.body);
+    let student = await filterService.cgpaGreater(hello);
     res.json({ student: student });
   } catch (error) {
     res.json(error);
