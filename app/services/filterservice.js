@@ -215,7 +215,7 @@ const getNotifStudents = async (criteria) => {
       students.push(eligible[student]['roll_no']);
     }
 
-    const pack_diff = 150000;
+    const limit = criteria.package - 150000 + 1;
 
     eligible = await prisma.student_placement_details.findMany({
       select: {
@@ -223,9 +223,9 @@ const getNotifStudents = async (criteria) => {
       },
       where: {
         roll_no: { in: students },
-        package_one: { lte: criteria.package - pack_diff },
-        package_two: { lte: criteria.package - pack_diff },
-        package_three: { lte: criteria.package - pack_diff },
+        package_one: { lt: limit },
+        package_two: { lt: limit },
+        package_three: { lt: limit },
       },
     });
 
