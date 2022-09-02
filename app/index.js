@@ -6,6 +6,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 import expressWinston from 'express-winston';
 import winston from 'winston';
+import fileUpload from 'express-fileupload';
 
 const PORT = config.PORT || 3000;
 
@@ -13,6 +14,8 @@ const startServer = () => {
   const app = express();
 
   app.use(helmet());
+
+  app.use(fileUpload());
   app.use(
     cors({
       origin: config.CORS_ORIGIN,
@@ -38,9 +41,12 @@ const startServer = () => {
   app.get('/', (req, res) => {
     return res.json({ message: 'Hello World' });
   });
-  return app.listen(PORT, () =>
+
+  app.listen(PORT, () =>
     logger.info(`Server running on port ${PORT} in ${config.NODE_ENV} mode`),
   );
+
+  return app;
 };
 
 export { startServer };

@@ -9,7 +9,8 @@
     "scripts": {
         "dev": "cross-env NODE_ENV=development nodemon index.js",
         "start": "yarn prisma generate && cross-env NODE_ENV=production node index.js",
-        "build": "yarn prisma generate"
+        "build": "yarn prisma generate",
+        "test": "node --experimental-vm-modules node_modules/.bin/jest"
     },
     "engines": {
         "node": "16.x"
@@ -24,9 +25,11 @@
         "eslint-plugin-prettier": "^4.0.0",
         "eslint-plugin-react": "^7.29.2",
         "eslint-plugin-react-hooks": "^4.3.0",
+        "jest": "^29.0.1",
         "nodemon": "^2.0.15",
         "prettier": "^2.5.1",
-        "prisma": "3.10.0"
+        "prisma": "3.10.0",
+        "supertest": "^6.2.4"
     },
     "dependencies": {
         "@prisma/client": "3.10.0",
@@ -37,6 +40,7 @@
         "dotenv": "^16.0.0",
         "exceljs": "^4.3.0",
         "express": "^4.17.3",
+        "express-fileupload": "^1.4.0",
         "express-winston": "^4.2.0",
         "helmet": "^5.0.2",
         "json-bigint": "^1.0.0",
